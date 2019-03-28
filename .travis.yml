@@ -2,7 +2,7 @@ language: node_js
 node_js:
     - "7"
 install:
-    - cd src && npm update-terminal && npm install
+    - cd src && npm run update-terminal && npm install
 script:
     - cd src && npm run build
 deploy:
