@@ -23,13 +23,19 @@ const init = async () => {
   await Terminal.addCommands({install});
   await Terminal.humanizerExecCmdArr([
     'install',
-    // 'install gui',
-    // 'gui'
   ]);
   import(/* webpackPrefetch: true */ '@zhoujiahao/blog/dist/vendors~main')
     .then(() => {
       const $linkToblog = $('.link-to-blog');
       $linkToblog.classList.add('command');
+
+      if (location.host === 'blog.zjh.im') {
+        Terminal.humanizerExecCmdArr([
+          'install gui',
+          'gui'
+        ]);
+
+      }
     })
 };
 
