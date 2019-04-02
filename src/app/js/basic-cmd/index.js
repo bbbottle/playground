@@ -3,6 +3,7 @@ import ls from './ls';
 import tohtml from './tohtml';
 import cat from './cat';
 import {MOON_URL} from '../constants/strVar';
+import fetchnote from './fetchNote';
 import {goto} from '../utils';
 
 const commands = {
@@ -11,6 +12,7 @@ const commands = {
     ls,
     cat,
     tohtml,
+    fetchnote
 };
 
 export default commands;
