@@ -17,7 +17,10 @@ const init = async () => {
       ? 'humanizerExecCmdArr'
       : 'humanizerExec';
 
-    Terminal[execFn](toExec);
+    evt.target.classList.remove('command');
+    Terminal[execFn](toExec).then(() => {
+      evt.target.classList.add('command');
+    });
   });
 
   await Terminal.addCommands({install});
