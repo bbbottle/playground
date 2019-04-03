@@ -20,9 +20,14 @@ export default {
       return Promise.resolve('成功安装命令，可输入 help 查看');
     } else {
       switch (cmdName) {
-        case 'gui' : {
-          const {default: gui} = await import('@zhoujiahao/blog');
-          window.Terminal.addCommands({gui});
+        case 'blog' : {
+          const {default: blog} = await import('@zhoujiahao/blog');
+          window.Terminal.addCommands({blog});
+          break;
+        }
+        case 'edit' : {
+          const {default: edit} = await import('@zhoujiahao/editor');
+          window.Terminal.addCommands({edit});
           break;
         }
         default:
@@ -32,4 +37,3 @@ export default {
     return '';
   }
 };
-

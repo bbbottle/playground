@@ -34,17 +34,6 @@ module.exports = {
         }
       },
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules|dist/,
-        use: {
-          loader: 'eslint-loader',
-          options: {
-            formatter: eslint_formatter_pretty,
-            fix: true,
-          }
-        }
-      },
-      {
         test: /\.(scss|css)$/,
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
