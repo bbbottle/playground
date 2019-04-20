@@ -9,6 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const stylePath = [
   path.resolve(__dirname, 'node_modules/@zhoujiahao/editor'),
   path.resolve(__dirname, 'app'),
+  '/Users/zjhou/Documents/sideProjects/command/packages/editor',
 ];
 
 module.exports = {
@@ -71,5 +72,10 @@ module.exports = {
       chunks: ['main-vendor', 'main']
     }),
     new ExtractTextPlugin(`[name].[md5:contenthash:base64:6].min.css`),
-  ]
+  ],
+  watchOptions: {
+    ignored: [
+      /node_modules([\\]+|\/)+(?!@zhoujiahao\/editor)/,
+    ]
+  }
 };
