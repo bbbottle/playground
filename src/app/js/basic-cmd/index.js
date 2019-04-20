@@ -4,6 +4,7 @@ import tohtml from './tohtml';
 import cat from './cat';
 import {MOON_URL} from '../constants/strVar';
 import fetchnote from './fetchNote';
+import deletenote from './deleteNote';
 import {goto} from '../utils';
 
 const commands = {
@@ -11,6 +12,7 @@ const commands = {
     about,
     ls,
     cat,
+    deletenote,
     tohtml,
     fetchnote
 };
