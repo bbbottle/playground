@@ -12,9 +12,9 @@
   "author": "zjhou",
   "license": "ISC",
   "dependencies": {
-    "@zhoujiahao/blog": "^1.1.12",
+    "@zhoujiahao/blog": "^1.1.13",
     "@zhoujiahao/editor": "^1.0.1",
-    "@zhoujiahao/utils": "^1.0.3",
+    "@zhoujiahao/utils": "^1.0.4",
     "github-markdown-css": "^2.10.0",
     "pseudoterminal": "file:../../pseudoTerminal",
     "showdown": "^1.9.0"
