@@ -1,6 +1,6 @@
 import {getPost} from '../api';
 import {title} from '../../tpl/post';
-import {docTpl, store} from '../utils';
+import {docTpl, store} from '@zhoujiahao/utils';
 
 const doc = docTpl('ls', 'ls', 'list all post titles');
 export default {
