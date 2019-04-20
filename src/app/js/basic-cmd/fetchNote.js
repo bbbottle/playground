@@ -1,5 +1,5 @@
 import {req} from '@zhoujiahao/utils';
-import {docTpl} from "@zhoujiahao/utils";
+import {docTpl} from '@zhoujiahao/utils';
 
 const atou = (str) => {
   return decodeURIComponent(escape(window.atob(str)));
@@ -18,4 +18,4 @@ export default {
     );
     return atou(encodedNote.content);
   }
-}
+};
