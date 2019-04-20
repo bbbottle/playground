@@ -28,7 +28,7 @@
             align-items: center;
             justify-content: center;
             min-height: 100%;
-            background: #333;
+            background: #eee;
         }
         body.fullscreen #terminal{
             width: 100vw;
@@ -51,7 +51,7 @@
 
         #terminal> div {
             padding: 5px 10px;
-            background: #f1f1f1;
+            background: #fefefe;
             border-radius: 15px;
             /*box-shadow: inset 0 0 5px #ccc;*/
         }
@@ -108,28 +108,35 @@
         }
         .link-to-blog {
             font-size: 10px;
-            color: #444;
+            color: #ccc;
             position: absolute;
             bottom: 50px;
             width: 383px;
             transition: color .5s;
         }
-        .command.link-to-blog { color: #aaa; }
+        .command.link-to-blog { color: #fff; }
 
         /* arrival */
-        span.blink {
+        /* span.blink {
             border-radius: 90% 0 0 90%/ 40% 0 0 60%;
             display: inline-block;
             width: 5px;
-        }
+        } */
 
         ::-webkit-scrollbar {
             width: 0 !important;
+        }
+        .human-shadow > img {
+            position: absolute;
         }
     </style>
 </head>
 <body style="margin: 0; padding: 0;">
 <div id="terminal"></div>
+<!--<div class="human-shadow">-->
+<!--    <img src="images/human-a.png" alt="">-->
+<!--    <img src="images/human-b.png" alt="">-->
+<!--</div>-->
 <div id="gui"></div>
 <span class="link-to-blog" data-cmd="install gui & gui" multi>@zJh</span>
 </body>
