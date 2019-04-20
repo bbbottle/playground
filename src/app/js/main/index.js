@@ -26,6 +26,7 @@ const init = async () => {
   await Terminal.addCommands({install});
   await Terminal.humanizerExecCmdArr([
     'install',
+    'clear',
   ]);
   import(/* webpackPrefetch: true */ '@zhoujiahao/blog/dist/vendors~main')
     .then(() => {
