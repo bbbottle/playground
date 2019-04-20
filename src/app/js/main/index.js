@@ -12,7 +12,7 @@ const init = async () => {
 
     let command = evt.target.getAttribute('data-cmd');
     let isMulti = evt.target.hasAttribute('multi');
-    let toExec = isMulti ? command.split(/\s*&\s*/) : command;
+    let toExec = isMulti ? command.split(/\s*&&\s*/) : command;
     let execFn = isMulti
       ? 'humanizerExecCmdArr'
       : 'humanizerExec';
