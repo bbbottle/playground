@@ -6,6 +6,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
+const stylePath = [
+  path.resolve(__dirname, 'node_modules/@zhoujiahao/editor'),
+  path.resolve(__dirname, 'app'),
+];
+
 module.exports = {
   entry: {
     'main-vendor': [
@@ -35,12 +40,12 @@ module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        exclude: /node_modules/,
+        include: stylePath,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            {loader: 'css-loader', options: {sourceMap: true}},
-            {loader: 'sass-loader', options: {sourceMap: true}},
+            'css-loader',
+            'sass-loader',
           ],
           publicPath: '/'
         })
