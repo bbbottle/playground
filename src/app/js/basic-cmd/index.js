@@ -14,7 +14,8 @@ const commands = {
     cat,
     deletenote,
     tohtml,
-    fetchnote
+    fetchnote,
+    setpat: (pat) => {localStorage.setItem('ghtoken', pat); return ''},
 };
 
 export default commands;
