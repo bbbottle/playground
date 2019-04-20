@@ -12,7 +12,7 @@
   "author": "zjhou",
   "license": "ISC",
   "dependencies": {
-    "@zhoujiahao/blog": "^1.1.9",
+    "@zhoujiahao/blog": "^1.1.12",
     "@zhoujiahao/editor": "^1.0.1",
     "@zhoujiahao/utils": "^1.0.3",
     "github-markdown-css": "^2.10.0",
