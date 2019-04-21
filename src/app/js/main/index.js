@@ -1,5 +1,5 @@
-import install from '../basic-cmd/install';
 import {$} from '@zhoujiahao/utils';
+import installCommands from './preInstall';
 
 const init = async () => {
   const {default: PseudoTerminal} = await import('pseudoterminal');
@@ -23,24 +23,9 @@ const init = async () => {
     });
   });
 
-  await Terminal.addCommands({install});
-  await Terminal.humanizerExecCmdArr([
-    'install',
-    'clear',
-  ]);
-  import(/* webpackPrefetch: true */ '@zhoujiahao/blog/dist/vendors~main')
-    .then(() => {
-      const $linkToblog = $('.link-to-blog');
-      $linkToblog.classList.add('command');
-
-      if (location.host === 'blog.zjh.im') {
-        Terminal.humanizerExecCmdArr([
-          'install gui',
-          'gui'
-        ]);
-
-      }
-    });
+  installCommands().then(() => {
+    console.log('commands installed');
+  })
 };
 
 init().then();
