@@ -1,4 +1,5 @@
 import { promiseOneByOne, $ } from "@zhoujiahao/utils"
+import stepIndicator from '../widgets/stepIndicator/'
 
 export default async function() {
   if(!window.Terminal) {
@@ -8,11 +9,14 @@ export default async function() {
   const installVendors = async () => {
     await import(/* webpackPrefetch: true */ '@zhoujiahao/blog/dist/vendors~main');
     const $linkToBlog = $('.link-to-blog');
+    if (!$linkToBlog) {
+      return;
+    }
     $linkToBlog.classList.add('command');
   };
 
   const installBasicCmd = async () => {
-    const {default: commands} = await import('../basic-cmd/');
+    const {default: commands} = await import('../basic-cmd');
     window.Terminal.addCommands(commands);
   };
 
@@ -26,12 +30,19 @@ export default async function() {
     window.Terminal.addCommands({edit});
   };
 
-  return promiseOneByOne([
+  const promiseQueue = [
     installVendors,
     installBasicCmd,
     installBlog,
     installEditor
-  ], (step) => {
-    console.log('step', step, 'DONE');
-  })
+  ];
+
+  const indicator = stepIndicator({
+    totalStep: promiseQueue.length,
+    indicatorColor: '#ccc',
+    x: 'center',
+    y: '50%',
+  });
+
+  return promiseOneByOne(promiseQueue, indicator.highlightStep).then(indicator.destroy)
 }
