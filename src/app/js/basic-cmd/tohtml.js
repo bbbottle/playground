@@ -1,6 +1,6 @@
 import showdown from 'showdown';
 import '../../style/markdown.css';
-import {docTpl} from '../utils';
+import {docTpl} from '@zhoujiahao/utils';
 let converter = new showdown.Converter({
     openLinksInNewWindow: true,
     simpleLineBreaks: true

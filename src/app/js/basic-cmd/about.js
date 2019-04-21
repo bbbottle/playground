@@ -1,4 +1,4 @@
-import {link} from '../utils/tplutil';
+import {link} from '@zhoujiahao/utils';
 
 export default function () {
     let githubLink = link('github', 'https://github.com/zjhou');

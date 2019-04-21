@@ -15,7 +15,7 @@ const stylePath = [
 module.exports = {
   entry: {
     'main-vendor': [
-      './app/js/utils/runtime'
+      '@zhoujiahao/utils/lib/runtime'
     ],
     'main': './app/js/main/index.js',
   },

@@ -5,7 +5,7 @@ import cat from './cat';
 import {MOON_URL} from '../constants/strVar';
 import fetchnote from './fetchNote';
 import deletenote from './deleteNote';
-import {goto} from '../utils';
+import {goto} from '@zhoujiahao/utils/';
 
 const commands = {
     moon: () => {goto(MOON_URL);},
