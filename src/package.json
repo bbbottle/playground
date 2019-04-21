@@ -12,10 +12,10 @@
   "author": "zjhou",
   "license": "ISC",
   "dependencies": {
-    "@zhoujiahao/blog": "^1.1.17",
-    "@zhoujiahao/editor": "^1.0.9",
+    "@zhoujiahao/blog": "^1.1.18",
+    "@zhoujiahao/editor": "^1.0.10",
     "@zhoujiahao/notebook": "^1.0.3",
-    "@zhoujiahao/utils": "^1.0.7",
+    "@zhoujiahao/utils": "^1.0.8",
     "github-markdown-css": "^2.10.0",
     "pseudoterminal": "file:../../pseudoTerminal",
     "showdown": "^1.9.0"
