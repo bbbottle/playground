@@ -71,7 +71,10 @@ module.exports = {
       filename: '../index.html',
       chunks: ['main-vendor', 'main']
     }),
-    new ExtractTextPlugin(`[name].[md5:contenthash:base64:6].min.css`),
+    new ExtractTextPlugin({
+      filename: `[name].[md5:contenthash:base64:6].min.css`,
+      allChunks: true,
+    }),
   ],
   watchOptions: {
     ignored: [
