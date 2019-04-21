@@ -41,7 +41,7 @@ export default async function() {
     totalStep: promiseQueue.length,
     indicatorColor: '#ccc',
     x: 'center',
-    y: '50%',
+    y: 'calc(40% + 62px)',
   });
 
   return promiseOneByOne(promiseQueue, indicator.highlightStep).then(indicator.destroy)
