@@ -1,8 +1,6 @@
-const eslint_formatter_pretty = require('eslint-formatter-pretty');
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
@@ -42,14 +40,16 @@ module.exports = {
       {
         test: /\.(scss|css)$/,
         include: stylePath,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader',
-            'sass-loader',
-          ],
-          publicPath: '/'
-        })
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '/'
+            }
+          },
+          'css-loader',
+          'sass-loader',
+        ],
       }
     ]
   },
@@ -71,14 +71,14 @@ module.exports = {
       filename: '../index.html',
       chunks: ['main-vendor', 'main']
     }),
-    new ExtractTextPlugin({
-      filename: `[name].[md5:contenthash:base64:6].min.css`,
+    new MiniCssExtractPlugin({
+      filename: `[name].[chunkhash:6].min.css`,
       allChunks: true,
     }),
   ],
   watchOptions: {
     ignored: [
-      /node_modules([\\]+|\/)+(?!@zhoujiahao\/editor)/,
+      /node_modules([\\]+|\/)+(?!(pseudoerminal|@zhoujiahao\/editor))/,
     ]
   }
 };

@@ -15,6 +15,7 @@ const commands = {
     deletenote,
     tohtml,
     fetchnote,
+    exit: () => {window.Terminal.destroy()},
 };
 
 export default commands;

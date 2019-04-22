@@ -19,7 +19,14 @@ const stepIndicator = function (userConfig) {
         </div>
     `;
     const $indicator = createNodesFrom(indicatorTpl)[0];
-    const styleStr = `position: absolute; top: ${config.y}; left: ${config.x}; color: ${config.indicatorColor}`;
+
+    const styleStr = `
+      position: absolute;
+      top: ${config.y};
+      left: ${config.x};
+      color: ${config.indicatorColor}
+     `;
+
     $indicator.setAttribute('style', styleStr);
     document.body.append($indicator);
     if (config.x === 'center') {
