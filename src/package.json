@@ -44,7 +44,7 @@
     "resolve-url-loader": "^2.3.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.3",
-    "webpack": "^4.30.0",
+    "webpack": "4.30.0",
     "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^3.2.1",
     "webpack-node-externals": "^1.7.2"
