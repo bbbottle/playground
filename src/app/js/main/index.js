@@ -1,5 +1,5 @@
-import install from '../basic-cmd/install';
 import {$} from '@zhoujiahao/utils';
+import installCommands from './preInstall';
 
 const init = async () => {
   const {default: PseudoTerminal} = await import('pseudoterminal');
@@ -12,7 +12,7 @@ const init = async () => {
 
     let command = evt.target.getAttribute('data-cmd');
     let isMulti = evt.target.hasAttribute('multi');
-    let toExec = isMulti ? command.split(/\s*&\s*/) : command;
+    let toExec = isMulti ? command.split(/\s*&&\s*/) : command;
     let execFn = isMulti
       ? 'humanizerExecCmdArr'
       : 'humanizerExec';
@@ -23,23 +23,9 @@ const init = async () => {
     });
   });
 
-  await Terminal.addCommands({install});
-  await Terminal.humanizerExecCmdArr([
-    'install',
-  ]);
-  import(/* webpackPrefetch: true */ '@zhoujiahao/blog/dist/vendors~main')
-    .then(() => {
-      const $linkToblog = $('.link-to-blog');
-      $linkToblog.classList.add('command');
-
-      if (location.host === 'blog.zjh.im') {
-        Terminal.humanizerExecCmdArr([
-          'install gui',
-          'gui'
-        ]);
-
-      }
-    })
+  installCommands().then(() => {
+    console.log('commands installed');
+  })
 };
 
 init().then();

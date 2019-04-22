@@ -1,0 +1,10 @@
+.step-indicator {
+  opacity: 1;
+  transition: opacity 2s;
+  font-family: monospace;
+  font-size: 12px;
+  letter-spacing: -3px;
+  &.done {
+    opacity: 0;
+  }
+}

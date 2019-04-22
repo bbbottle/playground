@@ -1,6 +1,5 @@
-import {req} from '../utils/requtils';
+import {req, format} from '@zhoujiahao/utils';
 import {api} from './constants';
-import {format} from '../utils';
 
 const getPost= () => {
     return req(api.posts, 'GET');

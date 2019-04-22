@@ -6,10 +6,16 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
+const stylePath = [
+  path.resolve(__dirname, 'node_modules/@zhoujiahao/editor'),
+  path.resolve(__dirname, 'app'),
+  '/Users/zjhou/Documents/sideProjects/command/packages/editor',
+];
+
 module.exports = {
   entry: {
     'main-vendor': [
-      './app/js/utils/runtime'
+      '@zhoujiahao/utils/lib/runtime'
     ],
     'main': './app/js/main/index.js',
   },
@@ -34,24 +40,13 @@ module.exports = {
         }
       },
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules|dist/,
-        use: {
-          loader: 'eslint-loader',
-          options: {
-            formatter: eslint_formatter_pretty,
-            fix: true,
-          }
-        }
-      },
-      {
         test: /\.(scss|css)$/,
-        exclude: /node_modules/,
+        include: stylePath,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            {loader: 'css-loader', options: {sourceMap: true}},
-            {loader: 'sass-loader', options: {sourceMap: true}},
+            'css-loader',
+            'sass-loader',
           ],
           publicPath: '/'
         })
@@ -76,6 +71,14 @@ module.exports = {
       filename: '../index.html',
       chunks: ['main-vendor', 'main']
     }),
-    new ExtractTextPlugin(`[name].[md5:contenthash:base64:6].min.css`),
-  ]
+    new ExtractTextPlugin({
+      filename: `[name].[md5:contenthash:base64:6].min.css`,
+      allChunks: true,
+    }),
+  ],
+  watchOptions: {
+    ignored: [
+      /node_modules([\\]+|\/)+(?!@zhoujiahao\/editor)/,
+    ]
+  }
 };

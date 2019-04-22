@@ -1,4 +1,4 @@
-import {store, docTpl} from '../utils';
+import {store, docTpl} from '@zhoujiahao/utils';
 import {getPostById} from '../api';
 
 const doc = docTpl('cat', 'cat <post title>', 'show post content');
