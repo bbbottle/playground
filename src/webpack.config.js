@@ -1,14 +1,10 @@
 const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-
-const stylePath = [
-  path.resolve(__dirname, 'node_modules/@zhoujiahao/editor'),
-  path.resolve(__dirname, 'app'),
-  '/Users/zjhou/Documents/sideProjects/command/packages/editor',
-];
 
 module.exports = {
   entry: {
@@ -39,7 +35,7 @@ module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        include: stylePath,
+        exclude: /node_modules/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -76,9 +72,4 @@ module.exports = {
       allChunks: true,
     }),
   ],
-  watchOptions: {
-    ignored: [
-      /node_modules([\\]+|\/)+(?!(pseudoerminal|@zhoujiahao\/editor))/,
-    ]
-  }
 };

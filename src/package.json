@@ -4,11 +4,9 @@
   "description": "zjh.im",
   "scripts": {
     "build": "webpack --progress --mode production --config webpack.config.js",
-    "start": "node tmpServer.js",
-    "link": "./link.sh",
-    "update-terminal": "npm install zjhou/pseudoTerminal#ref-with-rxjs --save",
     "watch": "webpack --progress -d --watch --config webpack.config.js",
-    "lint-fix": "eslint --fix app/js"
+    "start": "node tmpServer.js",
+    "link": "./link.sh"
   },
   "author": "zjhou",
   "license": "ISC",
@@ -16,9 +14,9 @@
     "@zhoujiahao/blog": "^1.1.20",
     "@zhoujiahao/editor": "^1.0.12",
     "@zhoujiahao/notebook": "^1.0.3",
+    "@zhoujiahao/terminal": "^1.0.1",
     "@zhoujiahao/utils": "^1.0.10",
     "github-markdown-css": "^2.10.0",
-    "pseudoterminal": "file:../../pseudoTerminal",
     "showdown": "^1.9.0"
   },
   "devDependencies": {
