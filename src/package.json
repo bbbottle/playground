@@ -11,7 +11,7 @@
   "author": "zjhou",
   "license": "ISC",
   "dependencies": {
-    "@zhoujiahao/blog": "^1.1.21",
+    "@zhoujiahao/blog": "^1.1.22",
     "@zhoujiahao/editor": "^1.0.14",
     "@zhoujiahao/notebook": "^1.0.3",
     "@zhoujiahao/terminal": "^1.0.2",
