@@ -65,7 +65,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'app/tpl/index.html',
       filename: '../index.html',
-      chunks: ['main-vendor', 'main']
+      chunks: ['main-vendor', 'main'],
+      chunksSortMode: 'dependency'
     }),
     new MiniCssExtractPlugin({
       filename: `[name].[chunkhash:6].min.css`,

@@ -1,4 +1,4 @@
-import {$} from '@zhoujiahao/utils';
+import {$, isMobile} from '@zhoujiahao/utils';
 import installCommands from './preInstall';
 
 import './index.scss';
@@ -25,7 +25,7 @@ const init = async () => {
   });
 
   installCommands().then(() => {
-    console.log('commands installed');
+    console.log('commands installed on your', isMobile() ? 'mobile' : 'pc');
   })
 };
 
