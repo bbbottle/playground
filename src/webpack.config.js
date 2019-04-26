@@ -6,6 +6,18 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
+const packagePath = /node_moudles\/@zhoujiahao\/[a-z-]+\/lib/;
+
+const jsPath = [
+  path.resolve(__dirname, 'app/js'),
+  packagePath
+];
+
+const stylePath = [
+  path.resolve(__dirname, 'app/style'),
+  packagePath
+];
+
 module.exports = {
   entry: {
     'main-vendor': [
@@ -24,7 +36,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        include: jsPath,
         use: {
           loader: 'babel-loader',
           options: {
@@ -35,7 +47,7 @@ module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        exclude: /node_modules/,
+        include: stylePath,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
