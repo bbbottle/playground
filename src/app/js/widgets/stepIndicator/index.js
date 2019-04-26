@@ -1,5 +1,5 @@
 import {createNodesFrom} from '@zhoujiahao/utils'
-import './style.scss'
+import '../../../style/style.scss'
 
 const defaultConfig = {
   totalStep: 0,

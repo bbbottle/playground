@@ -9,12 +9,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const packagePath = /node_moudles\/@zhoujiahao\/[a-z-]+\/lib/;
 
 const jsPath = [
-  path.resolve(__dirname, 'app/js'),
+  path.resolve(__dirname, 'app/js/'),
   packagePath
 ];
 
 const stylePath = [
-  path.resolve(__dirname, 'app/style'),
+  path.resolve(__dirname, 'app/style/'),
   packagePath
 ];
 
@@ -46,17 +46,12 @@ module.exports = {
         }
       },
       {
-        test: /\.(scss|css)$/,
+        test: /\.s?css$/,
         include: stylePath,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: '/'
-            }
-          },
-          'css-loader',
-          'sass-loader',
+          "style-loader",
+          "css-loader",
+          "sass-loader"
         ],
       }
     ]
