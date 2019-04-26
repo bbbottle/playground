@@ -16,7 +16,7 @@
     "@zhoujiahao/utils": "^1.0.11",
     "@zhoujiahao/blog": "^1.1.22",
     "@zhoujiahao/editor": "^1.0.14",
-    "@zhoujiahao/notebook": "^1.0.3",
+    "@zhoujiahao/notebook": "^1.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
