@@ -7,7 +7,7 @@ export default async function() {
   }
 
   const installVendors = async () => {
-    await import(/* webpackPrefetch: true */ '@zhoujiahao/blog/dist/vendors~main');
+    await import(/* webpackPrefetch: true */ '@zhoujiahao/blog/dist/vendors~blog.js');
     const $linkToBlog = $('.link-to-blog');
     if (!$linkToBlog) {
       return;

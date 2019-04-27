@@ -38,7 +38,7 @@ module.exports = (env) => {
 
   return {
     entry: {
-      'main-vendor': [
+      'polyfill': [
         '@zhoujiahao/utils/lib/runtime'
       ],
       'main': './app/js/main/index.js',
@@ -85,7 +85,7 @@ module.exports = (env) => {
       moduleIds: 'hashed',
       mergeDuplicateChunks: true,
       splitChunks: {
-        chunks: 'async',
+        chunks: 'all',
         minSize: 30000,
         maxSize: 0,
         minChunks: 1,
@@ -95,7 +95,7 @@ module.exports = (env) => {
         name: true,
         cacheGroups: {
           toys: {
-            test: packagePath,
+            test: /(@zhoujiahao|packages)/,
             priority: -10
           },
           default: {
