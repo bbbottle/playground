@@ -5,18 +5,19 @@
   "scripts": {
     "build": "webpack --progress --mode=production --config webpack.config.js --env production",
     "dev": "webpack --progress --mode=development -d --watch --config webpack.config.js --env development",
+    "dev-build": "webpack --progress --mode=production --config webpack.config.js --env local-build",
     "start": "node tmpServer.js",
     "link": "./link.sh"
   },
   "author": "zjhou",
   "license": "ISC",
   "dependencies": {
-    "@zhoujiahao/terminal": "^1.0.4",
-    "@zhoujiahao/commands": "^1.0.4",
-    "@zhoujiahao/utils": "^1.0.14",
     "@zhoujiahao/blog": "^1.1.25",
+    "@zhoujiahao/commands": "^1.0.4",
     "@zhoujiahao/editor": "^1.0.17",
-    "@zhoujiahao/notebook": "^1.0.3"
+    "@zhoujiahao/notebook": "^1.0.3",
+    "@zhoujiahao/terminal": "^1.0.4",
+    "@zhoujiahao/utils": "^1.0.14"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -26,6 +27,7 @@
     "babel-eslint": "^8.0.1",
     "babel-loader": "^8.0.4",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-preset-env": "^1.7.0",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.10",
     "eslint": "^5.0.1",
@@ -41,6 +43,7 @@
     "resolve-url-loader": "^2.3.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.3",
+    "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "4.28.4",
     "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^3.2.1",
