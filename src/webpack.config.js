@@ -9,7 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = (env) => {
   const projectPath = path.resolve(__dirname, 'app/');
   const packagePath = env === 'production'
-    ? /node_moudles\/@zhoujiahao\/[a-z-]+\/lib/
+    ? /node_modules\/@zhoujiahao\/[a-z-]+\/lib/
     : /packages\/[a-z-]+\/lib/;
 
   return {
