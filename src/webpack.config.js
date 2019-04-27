@@ -84,7 +84,6 @@ module.exports = (env) => {
       sideEffects: true,
       moduleIds: 'hashed',
       mergeDuplicateChunks: true,
-      runtimeChunk: "single",
       splitChunks: {
         chunks: 'async',
         minSize: 30000,
