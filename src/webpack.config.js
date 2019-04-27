@@ -6,17 +6,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
-const packagePath = /node_moudles\/@zhoujiahao\/[a-z-]+\/lib/;
-
-const jsPath = [
-  path.resolve(__dirname, 'app/js/'),
-  packagePath
-];
-
-const stylePath = [
-  path.resolve(__dirname, 'app/style/'),
-  packagePath
-];
+const projectPath = path.resolve(__dirname, 'app/');
+const packagePath = process.env.NODE_ENV === 'production'
+  ? /node_moudles\/@zhoujiahao\/[a-z-]+\/lib/
+  : /packages\/[a-z-]+\/lib/;
 
 module.exports = {
   entry: {
@@ -36,7 +29,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        include: jsPath,
+        include: [projectPath, packagePath],
         use: {
           loader: 'babel-loader',
           options: {
@@ -46,8 +39,8 @@ module.exports = {
         }
       },
       {
-        test: /\.s?css$/,
-        include: stylePath,
+        test: /\.(scss|css)$/,
+        include: [projectPath, packagePath],
         use: [
           "style-loader",
           "css-loader",
