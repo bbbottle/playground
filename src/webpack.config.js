@@ -7,8 +7,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = (env) => {
+  const isPRD = env === 'production';
   const projectPath = path.resolve(__dirname, 'app/');
-  const packagePath = env === 'production'
+  const packagePath = isPRD
     ? /node_modules\/@zhoujiahao\/[a-z-]+\/lib/
     : /packages\/[a-z-]+\/lib/;
 
@@ -51,13 +52,16 @@ module.exports = (env) => {
       ]
     },
     optimization: {
-      minimize: false,
+      minimize: isPRD,
       moduleIds: 'hashed',
       mergeDuplicateChunks: true,
     },
     plugins: [
       // 分析打包后的模块
-      // new BundleAnalyzerPlugin({analyzerMode: 'static', reportFilename: 'report.html'}),
+
+      ( isPRD || env === 'local' )
+        ? new BundleAnalyzerPlugin({analyzerMode: 'static', reportFilename: 'report.html'})
+        : null,
 
       new CleanWebpackPlugin([
         'dist/assets',
