@@ -3,8 +3,8 @@
   "version": "1.0.1",
   "description": "zjh.im",
   "scripts": {
-    "build": "webpack --progress --mode=production --config webpack.config.js",
-    "dev": "webpack --progress --mode=development -d --watch --config webpack.config.js",
+    "build": "webpack --progress --mode=production --config webpack.config.js --env production",
+    "dev": "webpack --progress --mode=development -d --watch --config webpack.config.js --env development",
     "start": "node tmpServer.js",
     "link": "./link.sh"
   },
