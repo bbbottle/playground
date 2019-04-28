@@ -1,10 +1,14 @@
 const path = require('path');
+const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+
+const manifestDirPath = path.resolve(__dirname, 'node_modules/@zhoujiahao/vendor/dist/');
+const manifestPath = path.resolve(manifestDirPath, './manifest.json');
 
 const plugins = [
   new CleanWebpackPlugin([
@@ -14,12 +18,19 @@ const plugins = [
   new HtmlWebpackPlugin({
     template: 'app/tpl/index.html',
     filename: '../index.html',
-    chunks: ['main-vendor', 'main'],
+    chunks: ['polyfill', 'main'],
     chunksSortMode: 'dependency'
   }),
   new MiniCssExtractPlugin({
     filename: `[name].[chunkhash:6].min.css`,
     allChunks: true,
+  }),
+  new AddAssetHtmlPlugin([{
+    filepath: path.resolve(__dirname, 'node_modules/@zhoujiahao/vendor/dist/vendor.js'),
+  }]),
+  new webpack.DllReferencePlugin({
+    context: manifestDirPath,
+    manifest: require(manifestPath),
   }),
 ];
 
@@ -48,6 +59,10 @@ module.exports = (env) => {
       chunkFilename: '[name].[chunkhash:6].js',
       publicPath: "/assets/",
       path: path.resolve(__dirname, 'dist/assets')
+    },
+    resolve: {
+      modules: ['node_modules'],
+      symlinks: true
     },
     devtool: 'inline-source-map',
     module: {
@@ -84,27 +99,6 @@ module.exports = (env) => {
       sideEffects: true,
       moduleIds: 'hashed',
       mergeDuplicateChunks: true,
-      splitChunks: {
-        chunks: 'all',
-        minSize: 30000,
-        maxSize: 0,
-        minChunks: 1,
-        maxAsyncRequests: 5,
-        maxInitialRequests: 3,
-        automaticNameDelimiter: '~',
-        name: true,
-        cacheGroups: {
-          toys: {
-            test: /(@zhoujiahao|packages)/,
-            priority: -10
-          },
-          default: {
-            minChunks: 2,
-            priority: -20,
-            reuseExistingChunk: true
-          }
-        }
-      }
     },
     plugins
   }
