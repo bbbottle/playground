@@ -29,7 +29,7 @@ const plugins = [
     filepath: path.resolve(__dirname, 'node_modules/@zhoujiahao/vendor/dist/vendor.js'),
   }]),
   new webpack.DllReferencePlugin({
-    context: manifestDirPath,
+    context: __dirname,
     manifest: require(manifestPath),
   }),
 ];
