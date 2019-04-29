@@ -6,15 +6,6 @@ export default async function() {
     return false;
   }
 
-  const installVendors = async () => {
-    await import(/* webpackPrefetch: true */ '@zhoujiahao/blog/dist/vendors~blog.js');
-    const $linkToBlog = $('.link-to-blog');
-    if (!$linkToBlog) {
-      return;
-    }
-    $linkToBlog.classList.add('command');
-  };
-
   const installBasicCmd = async () => {
     const {default: commands} = await import('@zhoujiahao/commands');
     window.Terminal.addCommands(commands);
@@ -31,7 +22,6 @@ export default async function() {
   };
 
   const promiseQueue = [
-    installVendors,
     installBasicCmd,
     installEditor,
     installBlog,
