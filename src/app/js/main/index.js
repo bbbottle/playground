@@ -1,7 +1,7 @@
 import {$} from '@zhoujiahao/utils';
 import installCommands from './preInstall';
 
-import '../../style/index.scss';
+import 'style/index.scss';
 const init = async () => {
   const {default: PseudoTerminal} = await import('@zhoujiahao/terminal');
   const Terminal = PseudoTerminal($('#terminal'));
