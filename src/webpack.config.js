@@ -61,7 +61,10 @@ module.exports = (env) => {
       path: path.resolve(__dirname, 'dist/assets')
     },
     resolve: {
-      modules: ['node_modules'],
+      modules: [path.resolve(__dirname, 'node_modules')],
+      alias: {
+        style: path.resolve(__dirname, 'app/style/'),
+      },
       symlinks: true
     },
     devtool: 'inline-source-map',
