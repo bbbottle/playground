@@ -12,15 +12,15 @@
   "author": "zjhou",
   "license": "ISC",
   "dependencies": {
-    "@zhoujiahao/blog": "^1.1.30-alpha.0",
-    "@zhoujiahao/commands": "^1.0.6-alpha.0",
+    "@zhoujiahao/blog": "^1.1.31",
+    "@zhoujiahao/commands": "^1.0.7",
     "@zhoujiahao/editor": "^1.0.19-alpha.0",
     "@zhoujiahao/notebook": "^1.0.3",
     "@zhoujiahao/terminal": "^1.0.6-alpha.0",
     "@zhoujiahao/utils": "^1.0.16-alpha.0"
   },
   "devDependencies": {
-    "@zhoujiahao/vendor": "^1.0.5-alpha.0",
+    "@zhoujiahao/vendor": "^1.0.6",
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "add-asset-html-webpack-plugin": "^3.1.3",
