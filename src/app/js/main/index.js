@@ -1,4 +1,4 @@
-import {$} from '@zhoujiahao/utils';
+import {$, isMobile} from '@zhoujiahao/utils';
 import installCommands from './preInstall';
 
 import 'style/index.scss';
@@ -24,7 +24,11 @@ const init = async () => {
     });
   });
 
-  return installCommands();
+  return installCommands().then(() => {
+    if (isMobile()) {
+      return Terminal.humanizerExecCmdArr(['blog', 'exit']);
+    }
+  });
 };
 
 init().then();
