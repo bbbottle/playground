@@ -1,5 +1,5 @@
 import {createNodesFrom} from '@zhoujiahao/utils'
-import './style.scss'
+import 'style/indicator.scss'
 
 const defaultConfig = {
   totalStep: 0,
@@ -27,7 +27,7 @@ const stepIndicator = function (userConfig) {
       color: ${config.indicatorColor}
      `;
 
-    $indicator.setAttribute('style', styleStr);
+    $indicator.setAttribute('indicator.scss', styleStr);
     document.body.append($indicator);
     if (config.x === 'center') {
       const { width } = $indicator.getBoundingClientRect();

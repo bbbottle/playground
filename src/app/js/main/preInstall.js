@@ -6,23 +6,9 @@ export default async function() {
     return false;
   }
 
-  const installVendors = async () => {
-    await import(/* webpackPrefetch: true */ '@zhoujiahao/blog/dist/vendors~main');
-    const $linkToBlog = $('.link-to-blog');
-    if (!$linkToBlog) {
-      return;
-    }
-    $linkToBlog.classList.add('command');
-  };
-
   const installBasicCmd = async () => {
-    const {default: commands} = await import('../basic-cmd');
+    const {default: commands} = await import('@zhoujiahao/commands');
     window.Terminal.addCommands(commands);
-  };
-
-  const installBlog = async () => {
-    const {default: blog} = await import('@zhoujiahao/blog');
-    window.Terminal.addCommands({blog});
   };
 
   const installEditor = async () => {
@@ -30,11 +16,15 @@ export default async function() {
     window.Terminal.addCommands({edit});
   };
 
+  const installBlog = async () => {
+    const {default: blog} = await import('@zhoujiahao/blog');
+    window.Terminal.addCommands({blog});
+  };
+
   const promiseQueue = [
-    installVendors,
     installBasicCmd,
+    installEditor,
     installBlog,
-    installEditor
   ];
 
   const indicator = stepIndicator({

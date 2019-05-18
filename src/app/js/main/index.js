@@ -1,9 +1,9 @@
-import {$} from '@zhoujiahao/utils';
+import {$, isMobile} from '@zhoujiahao/utils';
 import installCommands from './preInstall';
 
-import './index.scss';
+import 'style/index.scss';
 const init = async () => {
-  const {default: PseudoTerminal} = await import('pseudoterminal');
+  const {default: PseudoTerminal} = await import('@zhoujiahao/terminal');
   const Terminal = PseudoTerminal($('#terminal'));
   window.Terminal = Terminal;
 
@@ -24,9 +24,11 @@ const init = async () => {
     });
   });
 
-  installCommands().then(() => {
-    console.log('commands installed');
-  })
+  return installCommands().then(() => {
+    if (isMobile()) {
+      return Terminal.humanizerExecCmdArr(['blog', 'exit']);
+    }
+  });
 };
 
 init().then();
