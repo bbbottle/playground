@@ -12,12 +12,12 @@
   "author": "zjhou",
   "license": "ISC",
   "dependencies": {
-    "@zhoujiahao/blog": "^1.2.0",
-    "@zhoujiahao/commands": "^1.0.9",
+    "@zhoujiahao/blog": "^1.2.1",
+    "@zhoujiahao/commands": "^1.0.10",
     "@zhoujiahao/editor": "^1.0.19-alpha.0",
     "@zhoujiahao/notebook": "^1.0.3",
     "@zhoujiahao/terminal": "^1.0.6",
-    "@zhoujiahao/utils": "^1.0.17"
+    "@zhoujiahao/utils": "^1.0.18"
   },
   "devDependencies": {
     "@zhoujiahao/vendor": "^1.0.6",
