@@ -61,7 +61,7 @@ module.exports = (env) => {
       path: path.resolve(__dirname, 'dist/assets')
     },
     resolve: {
-      modules: [path.resolve(__dirname, 'node_modules')],
+      modules: [path.resolve(__dirname, 'node_modules'), 'node_modules'],
       alias: {
         style: path.resolve(__dirname, 'app/style/'),
       },

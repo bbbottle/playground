@@ -27,7 +27,7 @@ const stepIndicator = function (userConfig) {
       color: ${config.indicatorColor}
      `;
 
-    $indicator.setAttribute('indicator.scss', styleStr);
+    $indicator.setAttribute('style', styleStr);
     document.body.append($indicator);
     if (config.x === 'center') {
       const { width } = $indicator.getBoundingClientRect();
