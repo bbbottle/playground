@@ -12,7 +12,7 @@
   "author": "zjhou",
   "license": "ISC",
   "dependencies": {
-    "@zhoujiahao/blog": "^1.2.3",
+    "@zhoujiahao/blog": "^1.2.4",
     "@zhoujiahao/commands": "^1.0.10",
     "@zhoujiahao/editor": "^1.0.19-alpha.0",
     "@zhoujiahao/notebook": "^1.0.3",
