@@ -17,8 +17,11 @@ const plugins = [
 
   new HtmlWebpackPlugin({
     template: 'app/tpl/index.html',
-    filename: '../index.html',
+    filename: path.resolve(__dirname, 'dist/index.html'),
     chunks: ['polyfill', 'main'],
+    // scripts: [
+    //   path.resolve(__dirname, 'node_modules/@zhoujiahao/vendor/dist/vendor.js'),
+    // ],
     chunksSortMode: 'dependency'
   }),
   new MiniCssExtractPlugin({
@@ -35,16 +38,22 @@ const plugins = [
 ];
 
 module.exports = (env) => {
-  const isPRD = env === 'production' || env === 'local-build';
+  const isPRD = env === 'production';
   const projectPath = path.resolve(__dirname, 'app/');
-  const packagePath = (isPRD && env !== 'local-build')
+  const packagePath = isPRD
     ? /node_modules\/@zhoujiahao\/[a-z-]+\/lib/
     : /packages\/[a-z-]+\/lib/;
 
-  if (isPRD) {
+  /* if (isPRD) {
     plugins.push(
       new BundleAnalyzerPlugin({analyzerMode: 'static', reportFilename: 'report.html'})
     );
+  } */
+
+  if (!isPRD) {
+    plugins.push(
+      new webpack.HotModuleReplacementPlugin()
+    )
   }
 
   return {
@@ -52,11 +61,14 @@ module.exports = (env) => {
       'polyfill': [
         '@zhoujiahao/utils/lib/runtime'
       ],
-      'main': './app/js/main/index.js',
+      'main': [
+        !isPRD && 'webpack-hot-middleware/client?reload=true',
+        './app/js/main/index.js',
+      ]
     },
     output: {
-      filename: '[name].[chunkhash:6].js',
-      chunkFilename: '[name].[chunkhash:6].js',
+      filename: '[name].[hash:6].js',
+      chunkFilename: '[name].[hash:6].js',
       publicPath: "/assets/",
       path: path.resolve(__dirname, 'dist/assets')
     },
@@ -67,7 +79,7 @@ module.exports = (env) => {
       },
       symlinks: true
     },
-    devtool: 'inline-source-map',
+    mode: isPRD ? 'production' : 'development',
     module: {
       rules: [
         {
@@ -100,6 +112,7 @@ module.exports = (env) => {
       moduleIds: 'hashed',
       mergeDuplicateChunks: true,
     },
-    plugins
+    plugins,
+    devtool: 'inline-source-map',
   }
 };
