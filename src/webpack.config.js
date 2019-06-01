@@ -7,48 +7,40 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
-const manifestDirPath = path.resolve(__dirname, 'node_modules/@zhoujiahao/vendor/dist/');
-const manifestPath = path.resolve(manifestDirPath, './manifest.json');
-
-const plugins = [
-  new CleanWebpackPlugin([
-    'dist/assets',
-  ]),
-
-  new HtmlWebpackPlugin({
-    template: 'app/tpl/index.html',
-    filename: path.resolve(__dirname, 'dist/index.html'),
-    chunks: ['polyfill', 'main'],
-    // scripts: [
-    //   path.resolve(__dirname, 'node_modules/@zhoujiahao/vendor/dist/vendor.js'),
-    // ],
-    chunksSortMode: 'dependency'
-  }),
-  new MiniCssExtractPlugin({
-    filename: `[name].[chunkhash:6].min.css`,
-    allChunks: true,
-  }),
-  new AddAssetHtmlPlugin([{
-    filepath: path.resolve(__dirname, 'node_modules/@zhoujiahao/vendor/dist/vendor.js'),
-  }]),
-  new webpack.DllReferencePlugin({
-    context: __dirname,
-    manifest: require(manifestPath),
-  }),
-];
-
-module.exports = (env) => {
+module.exports = (env, argv) => {
   const isPRD = env === 'production';
   const projectPath = path.resolve(__dirname, 'app/');
   const packagePath = isPRD
     ? /node_modules\/@zhoujiahao\/[a-z-]+\/lib/
     : /packages\/[a-z-]+\/lib/;
 
-  /* if (isPRD) {
-    plugins.push(
-      new BundleAnalyzerPlugin({analyzerMode: 'static', reportFilename: 'report.html'})
-    );
-  } */
+  const manifestDirPath = path.resolve(__dirname, 'node_modules/@zhoujiahao/vendor/dist/');
+  const manifestPath = path.resolve(manifestDirPath, './manifest.json');
+
+  const plugins = [
+    new CleanWebpackPlugin([
+      'dist/assets',
+    ]),
+
+    new HtmlWebpackPlugin({
+      template: 'app/tpl/index.html',
+      filename: path.resolve(__dirname, 'dist/index.html'),
+      chunks: ['polyfill', 'main'],
+      chunksSortMode: 'dependency'
+    }),
+    new MiniCssExtractPlugin({
+      filename: `[name].[chunkhash:6].min.css`,
+      allChunks: true,
+    }),
+    new AddAssetHtmlPlugin([{
+      filepath: path.resolve(__dirname, 'node_modules/@zhoujiahao/vendor/dist/vendor.js'),
+    }]),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require(manifestPath),
+    }),
+  ];
+
 
   if (!isPRD) {
     plugins.push(
@@ -56,15 +48,24 @@ module.exports = (env) => {
     )
   }
 
+  if (argv && argv['enable-bundle-analyzer']) {
+    plugins.push(
+      new BundleAnalyzerPlugin({analyzerMode: 'static', reportFilename: 'report.html'})
+    );
+  }
+
+  const mainEntry = {
+   'main': ['./app/js/main/index.js'],
+  };
+
+  if (!isPRD) {
+    mainEntry.main.unshift('webpack-hot-middleware/client?reload=true');
+  }
+
   return {
     entry: {
-      'polyfill': [
-        '@zhoujiahao/utils/lib/runtime'
-      ],
-      'main': [
-        !isPRD && 'webpack-hot-middleware/client?reload=true',
-        './app/js/main/index.js',
-      ]
+      'polyfill': '@zhoujiahao/utils/lib/runtime',
+      ...mainEntry,
     },
     output: {
       filename: '[name].[hash:6].js',

@@ -4,7 +4,8 @@
   "description": "zjh.im",
   "scripts": {
     "build": "webpack --progress --config webpack.config.js --env production",
-    "dev": "node ./tmpServer.js",
+    "dev": "npm run link && node ./tmpServer.js",
+    "build-ba": "webpack --progress --config webpack.config.js --env production --enable-bundle-analyzer",
     "link": "./link.sh"
   },
   "author": "zjhou",
