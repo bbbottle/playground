@@ -8,16 +8,14 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100%;
-  background: #eee;
+  background: #fffffb;
 }
 body.fullscreen #terminal{
   width: 100vw;
   height: 98vh;
   margin-top: 0;
 }
-body.fullscreen #terminal> div {
-  box-shadow: inset 0 0 0 #fff;
-}
+
 html {overflow: hidden}
 #terminal{
   /*top: 131px;*/
@@ -34,7 +32,7 @@ html {overflow: hidden}
   height: calc(100% - 20px) !important;
   background: #fefefe;
   border-radius: 15px;
-  box-shadow: inset 0 0 10px #ccc;
+  //box-shadow: inset 0 0 10px #ccc;
 }
 
 .command {
