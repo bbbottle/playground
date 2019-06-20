@@ -29,7 +29,8 @@ export default async function() {
 
   const indicator = stepIndicator({
     totalStep: promiseQueue.length,
-    indicatorColor: '#ccc',
+    indicatorColor: '#d6d6d6',
+    indicatorHighlightColor: 'rgba(253, 165, 142, 0.8784313725490196)',
     x: 'center',
     y: 'calc(40% + 62px)',
   });
