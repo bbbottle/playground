@@ -2,5 +2,6 @@
 
 ### Description
 
-[zjh.im](https://zjh.im) is my blog and playground. Powered by github pages and strapi
+[zjh.im](https://zjh.im) is my blog and playground.
+Powered by github pages and [strapi](https://github.com/strapi/strapi)
 
