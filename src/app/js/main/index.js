@@ -5,9 +5,9 @@ import 'style/index.scss';
 const init = async () => {
   const {default: PseudoTerminal} = await import('@zhoujiahao/terminal');
   const Terminal = PseudoTerminal($('#terminal'), {
-    background: 'rgba(253, 165, 142, 0.8784313725490196)',
-    color: '#fff',
-    cursorColor: '#fff',
+    // background: 'rgba(253, 165, 142, 0.8784313725490196)',
+    // color: '#fff',
+    // cursorColor: '#fff',
   });
   window.Terminal = Terminal;
 
