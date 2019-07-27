@@ -23,7 +23,7 @@ export default async function() {
 
   const promiseQueue = [
     installBasicCmd,
-    installEditor,
+    // installEditor,
     installBlog,
   ];
 

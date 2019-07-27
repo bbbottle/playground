@@ -16,7 +16,11 @@ body.fullscreen #terminal{
   margin-top: 0;
 }
 
-html {overflow: hidden}
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
 #terminal{
   /*top: 131px;*/
   height: 93px;
@@ -24,6 +28,7 @@ html {overflow: hidden}
   margin-top: -10%;
   transition: all .3s;
   position: relative;
+  border: solid 1px #000;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
