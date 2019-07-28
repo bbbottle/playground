@@ -1,5 +1,5 @@
 import {$, isMobile} from '@zhoujiahao/utils';
-import installCommands from './preInstall';
+import preInstall from './preInstall';
 
 import 'style/index.scss';
 const init = async () => {
@@ -28,11 +28,11 @@ const init = async () => {
     });
   });
 
-  return installCommands().then(() => {
-    if (isMobile()) {
-      return Terminal.humanizerExecCmdArr(['blog', 'exit']);
-    }
-  });
+  Terminal.addCommands({preInstall});
+  await Terminal.exec('preInstall');
+  if (isMobile()) {
+    return Terminal.humanizerExecCmdArr(['blog', 'exit']);
+  }
 };
 
 init().then();
