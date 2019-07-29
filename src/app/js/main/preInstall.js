@@ -24,10 +24,10 @@ export default async function(p1, p2, p3, p4, print) {
   const promiseQueue = [
     {
       action: installBasicCmd,
-      desc: "安装基本命令...",
+      desc: "安装基本命令 [DONE]",
     }, {
       action: installBlog,
-      desc: "安装博客..."
+      desc: "安装博客 [DONE]"
     },
   ];
 
@@ -39,8 +39,6 @@ export default async function(p1, p2, p3, p4, print) {
     y: 'calc(40% + 62px)',
   }); */
   const log = (step) => {print(promiseQueue[step].desc, true)};
-  return promiseOneByOne(
-    promiseQueue.map(({action}) => action), log).then(() => {
-      print("完成。", true);
-  })
+  return promiseOneByOne(promiseQueue.map(({action}) => action), log);
+
 }
