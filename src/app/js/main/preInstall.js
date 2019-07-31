@@ -27,7 +27,7 @@ export default async function(p1, p2, p3, p4, print) {
       desc: "安装基本命令 [DONE]",
     }, {
       action: installBlog,
-      desc: "安装博客 [DONE]"
+      desc: "安装博客组件 [DONE]"
     },
   ];
 
