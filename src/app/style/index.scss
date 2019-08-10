@@ -11,6 +11,11 @@ body {
   justify-content: center;
   min-height: 100%;
   background: #d5d7d4;
+  transition: background .3s;
+}
+
+.white-bg {
+  background: #fff;
 }
 
 body.fullscreen #terminal{
