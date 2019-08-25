@@ -29,10 +29,12 @@ const init = async () => {
   });
 
   Terminal.addCommands({preInstall});
-  await Terminal.exec('preInstall');
+  await Terminal.humanizerExec('preInstall');
   if (isMobile()) {
     return Terminal.humanizerExecCmdArr(['blog', 'exit']);
   }
 };
 
-init().then();
+init().then(() => {
+  $(".commands").classList.add('show');
+});
