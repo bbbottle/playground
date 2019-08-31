@@ -10,8 +10,8 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-  background: #d5d7d4;
-  transition: background .3s;
+  //background: #d5d7d4;
+  //transition: background .3s;
 }
 
 .white-bg {
@@ -86,7 +86,7 @@ html {
     box-shadow: unset;
     border: none;
   }
-  #terminal + .commands { display: none}
+  .commands { display: none }
   #terminal div {
     border-radius: 0;
   }
