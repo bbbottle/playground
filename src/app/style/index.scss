@@ -86,7 +86,7 @@ html {
     box-shadow: unset;
     border: none;
   }
-  .commands { display: none }
+  .commands { display: none !important;}
   #terminal div {
     border-radius: 0;
   }

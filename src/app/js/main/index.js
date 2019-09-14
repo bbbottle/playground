@@ -36,5 +36,7 @@ const init = async () => {
 };
 
 init().then(() => {
-  $(".commands").classList.add('show');
+  if (!isMobile()) {
+    $(".commands").classList.add('show');
+  }
 });
