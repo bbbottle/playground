@@ -17,7 +17,7 @@
     "@zhoujiahao/utils": "^1.0.20"
   },
   "devDependencies": {
-    "@zhoujiahao/build-zjh-im": "^1.0.9",
+    "@zhoujiahao/build-zjh-im": "^1.0.21",
     "@zhoujiahao/vendor": "^1.0.6"
   }
 }
