@@ -30,6 +30,7 @@ const init = async () => {
 
   Terminal.addCommands({preInstall});
   await Terminal.humanizerExec('preInstall');
+
   if (isMobile()) {
     return Terminal.humanizerExecCmdArr(['blog', 'exit']);
   }
