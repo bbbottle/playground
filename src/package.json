@@ -11,7 +11,7 @@
   "dependencies": {
     "@zhoujiahao/blog": "^1.5.37",
     "@zhoujiahao/commands": "^1.1.0",
-    "@zhoujiahao/pm": "^1.0.0",
+    "@zhoujiahao/pm": "^1.0.10",
     "@zhoujiahao/terminal": "^1.0.7",
     "@zhoujiahao/utils": "^1.0.20"
   },
