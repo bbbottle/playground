@@ -4,7 +4,7 @@
   "description": "zjh.im",
   "scripts": {
     "build": "z-build release",
-    "dev": "z-build"
+    "dev": "z-build dev"
   },
   "author": "zjhou",
   "license": "ISC",
