@@ -28,16 +28,24 @@ const init = async () => {
     });
   });
 
-  Terminal.addCommands({preInstall});
-  await Terminal.humanizerExec('preInstall');
+  Terminal.addCommands({
+    hi: (p1 = {}, p2, p3, p4, print) => {
+      print('This site is currently constructing...')
+      print('comming soon!')
+      return;
+    }
+  })
+  return Terminal.humanizerExecCmdArr(['hi']);
+  // Terminal.addCommands({preInstall});
+  /* await Terminal.humanizerExec('preInstall');
 
   if (isMobile()) {
     return Terminal.humanizerExecCmdArr(['blog', 'exit']);
-  }
+  } */
 };
 
 init().then(() => {
-  if (!isMobile()) {
-    $(".commands").classList.add('show');
-  }
+  // if (!isMobile()) {
+  //   $(".commands").classList.add('show');
+  // }
 });
