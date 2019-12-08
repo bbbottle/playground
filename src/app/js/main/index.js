@@ -35,17 +35,17 @@ const init = async () => {
       return;
     }
   })
-  return Terminal.humanizerExecCmdArr(['hi']);
-  // Terminal.addCommands({preInstall});
-  /* await Terminal.humanizerExec('preInstall');
 
-  if (isMobile()) {
-    return Terminal.humanizerExecCmdArr(['blog', 'exit']);
-  } */
+  Terminal.addCommands({preInstall});
+  await Terminal.humanizerExec('preInstall');
+
+  return Terminal.humanizerExecCmdArr([
+    isMobile() ? 'hi': 'blog'
+  ]);
 };
 
 init().then(() => {
-  // if (!isMobile()) {
-  //   $(".commands").classList.add('show');
-  // }
+  if (!isMobile()) {
+    $(".commands").classList.add('show');
+  }
 });
