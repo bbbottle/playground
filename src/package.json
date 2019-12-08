@@ -9,7 +9,7 @@
   "author": "zjhou",
   "license": "ISC",
   "dependencies": {
-    "@zhoujiahao/blog": "^1.7.1",
+    "@zhoujiahao/blog": "^1.7.5",
     "@zhoujiahao/commands": "^1.1.0",
     "@zhoujiahao/pm": "^1.0.10",
     "@zhoujiahao/terminal": "^1.0.7",
