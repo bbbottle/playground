@@ -9,14 +9,14 @@
   "author": "zjhou",
   "license": "ISC",
   "dependencies": {
-    "@zhoujiahao/blog": "^1.5.37",
+    "@zhoujiahao/blog": "^1.7.1",
     "@zhoujiahao/commands": "^1.1.0",
     "@zhoujiahao/pm": "^1.0.10",
     "@zhoujiahao/terminal": "^1.0.7",
     "@zhoujiahao/utils": "^1.0.20"
   },
   "devDependencies": {
-    "@zhoujiahao/build-zjh-im": "^1.0.21",
+    "@zhoujiahao/build-zjh-im": "^1.0.53",
     "@zhoujiahao/vendor": "^1.0.6"
   }
 }
