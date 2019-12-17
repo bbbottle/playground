@@ -6,36 +6,36 @@ export default async function(p1, p2, p3, p4, print) {
     return false;
   }
 
-  // const installBasicCmd = async () => {
-  //   const {default: commands} = await import('@zhoujiahao/commands');
-  //   window.Terminal.addCommands(commands);
-  // };
+  const installBasicCmd = async () => {
+    const {default: commands} = await import('@zhoujiahao/commands');
+    window.Terminal.addCommands(commands);
+  };
 
-  // const installEditor = async () => {
-  //   const {default: edit} = await import('@zhoujiahao/editor');
-  //   window.Terminal.addCommands({edit});
-  // };
+  const installEditor = async () => {
+    const {default: edit} = await import('@zhoujiahao/editor');
+    window.Terminal.addCommands({edit});
+  };
 
   const installBlog = async () => {
     const {default: blog} = await import('@zhoujiahao/blog');
     window.Terminal.addCommands({blog});
   };
 
-  // const installBlogPostsManager = async () => {
-  //   const {default: pm} = await import('@zhoujiahao/pm');
-  //   window.Terminal.addCommands({pm});
-  // };
+  const installBlogPostsManager = async () => {
+    const {default: pm} = await import('@zhoujiahao/pm');
+    window.Terminal.addCommands({pm});
+  };
 
-  const promiseQueue = [/* {
+  const promiseQueue = [{
       action: installBasicCmd,
       desc: "安装基本命令 [DONE]",
-  }, {
+  }, /* {
       action: installEditor,
       desc: "安装编辑器 [DONE]",
-    },  {
+    }, */ {
       action: installBlogPostsManager,
       desc: "安装管理工具 [DONE]",
-    }, */{
+    }, {
       action: installBlog,
       desc: "安装博客组件 [DONE]"
     }

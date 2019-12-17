@@ -39,9 +39,9 @@ const init = async () => {
   Terminal.addCommands({preInstall});
   await Terminal.humanizerExec('preInstall');
 
-  return Terminal.humanizerExecCmdArr([
-    isMobile() ? 'hi': 'blog'
-  ]);
+  if (isMobile()) {
+    return Terminal.humanizerExec('hi');
+  }
 };
 
 init().then(() => {
