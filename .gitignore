@@ -9,3 +9,4 @@ node_modules
 src/dist/assets
 src/dist/index.html
 src/dist/sw.js
+.DS_Store
