@@ -1,6 +1,6 @@
 {
   "name": "zjh",
-  "version": "1.0.1",
+  "version": "2.1.0",
   "description": "zjh.im",
   "scripts": {
     "build": "z-build release",
@@ -9,10 +9,7 @@
   "author": "zjhou",
   "license": "ISC",
   "dependencies": {
-    "@zhoujiahao/blog": "1.7.21",
-    "@zhoujiahao/commands": "^1.1.0",
-    "@zhoujiahao/pm": "^1.0.10",
-    "@zhoujiahao/terminal": "^1.0.7",
+    "@zhoujiahao/blog": "1.7.22",
     "@zhoujiahao/utils": "^1.0.20"
   },
   "devDependencies": {
