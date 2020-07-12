@@ -25,7 +25,6 @@ jobs:
         with:
           node-version: '8.x'
 
-      - run: cd src
       - run: npm install
       - run: npm run build
 
