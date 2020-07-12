@@ -5,7 +5,7 @@ on:
     branches:
       - master
     tags:
-      - 'workflow-test.*.*'
+      - 'v*.*.*'
 
 jobs:
   deploy:
@@ -39,8 +39,8 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          external_repository: zjhou/tmp-workfow-test
-          publish_branch: workflow
+          external_repository: zjhou.github.io
+          publish_branch: master
           publish_dir: ./src/dist
           tag_name: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
           tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'
