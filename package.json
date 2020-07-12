@@ -1,0 +1,19 @@
+{
+  "name": "zjh",
+  "version": "2.1.1",
+  "description": "zjh.im",
+  "scripts": {
+    "build": "z-build release",
+    "dev": "z-build dev"
+  },
+  "author": "zjhou",
+  "license": "ISC",
+  "dependencies": {
+    "@zhoujiahao/blog": "1.7.23",
+    "@zhoujiahao/utils": "^1.0.20"
+  },
+  "devDependencies": {
+    "@zhoujiahao/build-zjh-im": "^1.0.53",
+    "@zhoujiahao/vendor": "^1.0.6"
+  }
+}
