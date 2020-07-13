@@ -1,6 +1,10 @@
-# ![profile](/docs/zjh.im.logo.png)
+# ![profile](/docs/Logo.png)
 
 
 [zjh.im](https://zjh.im) is my blog and playground.
-Powered by github pages and MongoDB Atlas.
+Powered by
+- GitHub Pages
+- GitHub Actions
+- [Vercel](https://vercel.com)
+- MongoDB Atlas
 
