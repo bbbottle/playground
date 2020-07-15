@@ -1,6 +1,6 @@
 {
   "name": "zjh",
-  "version": "2.2.11",
+  "version": "2.2.12",
   "description": "zjh.im",
   "scripts": {
     "build": "z-build release",
