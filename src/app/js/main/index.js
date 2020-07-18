@@ -1,5 +1,5 @@
 import 'style/index.scss';
-import 'style/markdown.css';
+import 'style/markdown.scss';
 
 const init = async () => {
   const { default: blogMod } = await import('@zhoujiahao/blog');
