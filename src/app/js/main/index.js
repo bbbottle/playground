@@ -1,9 +1,11 @@
+import { $ } from '@zhoujiahao/utils';
 import 'style/index.scss';
 import 'style/markdown.scss';
 
 const init = async () => {
-  const { default: blogMod } = await import('@zhoujiahao/blog');
-  return blogMod.handler();
+  const { default: renderBlogAt } = await import('@zhoujiahao/blog');
+  const mountDom = $('#gui');
+  return renderBlogAt(mountDom);
 };
 
 init().then(() => {
