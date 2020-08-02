@@ -1,6 +1,6 @@
 {
   "name": "zjh",
-  "version": "2.5.3",
+  "version": "2.5.4",
   "description": "https://zjh.im",
   "scripts": {
     "build": "z-build release",
@@ -13,7 +13,7 @@
     "@zhoujiahao/utils": "^1.0.20"
   },
   "devDependencies": {
-    "@zhoujiahao/build-zjh-im": "1.0.70",
+    "@zhoujiahao/build-zjh-im": "1.0.71",
     "@zhoujiahao/vendor": "1.0.22"
   }
 }
