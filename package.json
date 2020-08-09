@@ -1,6 +1,6 @@
 {
   "name": "zjh",
-  "version": "2.5.6",
+  "version": "2.6.0",
   "description": "https://zjh.im",
   "scripts": {
     "build": "z-build release",
@@ -9,11 +9,11 @@
   "author": "zjhou",
   "license": "ISC",
   "dependencies": {
-    "@zhoujiahao/blog": "1.9.4",
+    "@zhoujiahao/blog": "1.10.0",
     "@zhoujiahao/utils": "^1.0.20"
   },
   "devDependencies": {
-    "@zhoujiahao/build-zjh-im": "1.0.73",
+    "@zhoujiahao/build-zjh-im": "1.0.75",
     "@zhoujiahao/vendor": "1.0.22"
   }
 }
