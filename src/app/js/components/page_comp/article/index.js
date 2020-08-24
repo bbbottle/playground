@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { LogoIcon } from '@zhoujiahao/bblego';
 import { Layout } from "./layout";
 import {
   HTML,
@@ -18,35 +17,23 @@ const wrapTitle = (title = '') => {
   return `《${cleanTitle}》`;
 }
 
-const Actions = ({
-  next,
-  prev,
-  totalPages,
-  onLogoClick,
-  currentPageIndex,
+const Article = ({
+  title, content, actions, progress, ...rest
 }) => {
   return (
-    <span className="actions">
-      <span className="clickable" onClick={prev}>上一篇</span>
-      <span className="clickable" onClick={next}>下一篇</span>
-      <span className="counter">{`${currentPageIndex} / ${totalPages}`}</span>
-      <span className="clickable" onClick={onLogoClick}><LogoIcon /></span>
-    </span>
-  );
-}
-
-const Article = ({ title, content, actions }) => {
-  return (
     <Layout
+      progress={progress}
       left={wrapTitle(title)}
       rightTop={<HTML md={content} />}
       rightBottom={actions}
+      {...rest}
     />
   )
 };
 
 export const Articles = ({ context }) => {
-  const { openMenu } = React.useContext(context.BlogContext);
+  const { setCursorText } = React.useContext(context.CursorContext);
+
   return (
     <PostsProvider>
       {({ posts }) => {
@@ -60,10 +47,15 @@ export const Articles = ({ context }) => {
                 currentPageData,
                 ...rest
               }) => {
+                const progress = `${rest.currentPageIndex} / ${rest.totalPages}`;
                 const post = currentPageData[0];
                 return (
                   <Article
-                    actions={<Actions onLogoClick={openMenu} {...rest} />}
+                    onLeftClick={rest.prev}
+                    onRightClick={rest.next}
+                    progress={progress}
+                    setCursorText={setCursorText}
+                    {...rest}
                     {...post}
                   />
                 )

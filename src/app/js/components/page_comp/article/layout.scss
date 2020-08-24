@@ -21,6 +21,10 @@
         }
       }
     }
+    .right-top {
+      pointer-events: none;
+      user-select: none;
+    }
     .right-bottom {
       position: sticky;
       bottom: 0;

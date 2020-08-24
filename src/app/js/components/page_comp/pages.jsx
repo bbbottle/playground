@@ -57,7 +57,7 @@ export const pagesBuilder = (tools) => {
     articles: {
       title: '杂记',
       icon: <PostIcon />,
-      component: <Articles context={{ BlogContext }} />,
+      component: <Articles context={{ BlogContext, CursorContext }} />,
     },
     photos: {
       title: '照片',
