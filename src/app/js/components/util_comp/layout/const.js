@@ -1,0 +1,7 @@
+const GOLDEN_RATIO = 0.618;
+const BIG_RATIO = GOLDEN_RATIO + (1 - GOLDEN_RATIO) * (1 - GOLDEN_RATIO);
+
+export {
+  GOLDEN_RATIO,
+  BIG_RATIO,
+}

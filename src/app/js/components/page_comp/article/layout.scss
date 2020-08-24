@@ -1,0 +1,37 @@
+.article-layout {
+  display: flex;
+  height: 100%;
+
+  & > div {
+    flex: 1 0 50%;
+    &.right {
+      position: relative;
+      text-align: justify;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-right: $padding-4;
+
+      overflow: auto;
+      .markdown-body {
+        line-height: 2.2;
+
+        p {
+          margin-bottom: 32px;
+        }
+      }
+    }
+    .right-bottom {
+      position: sticky;
+      bottom: 0;
+    }
+    &.left {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+
+      line-height: 2.2;
+      padding-right: $padding-1;
+    }
+  }
+}

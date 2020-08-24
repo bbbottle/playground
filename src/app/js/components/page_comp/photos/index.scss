@@ -1,0 +1,13 @@
+.photo-gallery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+
+  img {
+    height: 80%;
+    max-width: 100%;
+    cursor: none;
+  }
+}

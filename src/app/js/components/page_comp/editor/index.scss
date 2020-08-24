@@ -1,0 +1,25 @@
+.posts-editor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  label {
+    margin-right: $padding-1;
+  }
+
+  .pane {
+    flex: 1 1 auto;
+  }
+
+  .keys {
+    input {
+      font-family: $body-font-family;
+      border: none;
+      outline: none;
+      border-bottom: solid 1px $green-1;
+      padding: $padding-1;
+      background: none;
+    }
+  }
+}

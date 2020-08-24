@@ -1,0 +1,25 @@
+.post-title {
+  margin: 193px 0 108px 0;
+  font-size: 32px;
+}
+
+.post-content {
+  line-height: $content-line-height;
+}
+
+.post-content img {
+  max-width: 80%;
+  max-height: $max-img-height;
+}
+
+.markdown-body {
+  font-family: $body-font-family;
+  margin: 0;
+}
+
+// style for mobile
+.App.mobile {
+  .post-content img {
+    max-width: 100%;
+  }
+}

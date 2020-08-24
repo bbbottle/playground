@@ -1,0 +1,18 @@
+.tooltip {
+    position: absolute;
+    transition: transform .1s;
+    top: 0;
+    left: 0;
+    will-change: opacity, transform;
+    mix-blend-mode: difference;
+    opacity: 0;
+    color: $gray-3;
+    font-family: Untitled Sans,Helvetica,Arial,sans-serif;
+}
+
+.tooltip-wrapper {
+    position: relative;
+    &:hover .tooltip {
+        opacity: 1;
+    }
+}

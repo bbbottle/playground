@@ -1,0 +1,106 @@
+.progress-number {
+  font-family: monospace;
+  .current {
+    color: $black;
+    font-size: $title-font-size;
+  }
+  .total {
+    color: $gray-4;
+    font-size: $time-font-size;
+  }
+}
+
+.tick-indicator {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+
+  $tickWidth: 1px;
+  $tickHeight: 6px;
+  $activeTickWd: 1px;
+  $activeTickHt: 12px;
+  $tickColor: $gray-3;
+  $activeTickColor: $black;
+
+  &.absolute-right {
+    display: inline-flex;
+    position: absolute;
+    right: 0;
+  }
+
+  &.fixed-top {
+    position: fixed;
+    //top: $tinyPadding;
+    top: 0;
+    align-items: flex-start;
+
+    &:hover {
+      cursor: pointer;
+      .tick {
+        background: $green-1;
+        &.active {
+          background: $black;
+        }
+      }
+    }
+  }
+
+  &.vertical {
+    flex-direction: column;
+
+    &:hover {
+      cursor: pointer;
+      .tick {
+        background: $green-1;
+
+        &.active::before {
+          opacity: 1;
+          top: -7px;
+        }
+      }
+    }
+
+    .tick {
+      position: relative;
+      width: $tickHeight;
+      height: $tickWidth;
+      background: $tickColor;
+      transition: all .3s;
+
+      &:not(:last-child) {
+        margin-bottom: $padding-1;
+      }
+
+      &.active::before {
+        opacity: 0;
+        content: attr(data-title);
+        position: absolute;
+        width: 100px;
+        text-align: right;
+        right: 17px;
+        top: -6px;
+        font-size: 10px;
+        transition: .2s;
+      }
+
+      &.active {
+        width: $activeTickHt;
+        height: $activeTickWd;
+        background: $activeTickColor;
+      }
+    }
+  }
+
+  .tick {
+    width: $tickWidth;
+    height: $tickHeight;
+    background: $tickColor;
+    margin-right: $padding-1;
+
+    &.active {
+      width: $activeTickWd;
+      height: $activeTickHt;
+      background: $activeTickColor;
+    }
+  }
+}

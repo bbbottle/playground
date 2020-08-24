@@ -1,0 +1,10 @@
+.figma-live {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  iframe {
+    border: none; // solid 5px #96dbc2;
+  }
+}
