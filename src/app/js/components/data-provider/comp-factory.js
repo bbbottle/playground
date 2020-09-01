@@ -8,7 +8,8 @@ import {
 
 const buildDataProvider = (
   queryFn = () => Promise.resolve(),
-  payloadKey = 'payload'
+  payloadKey = 'payload',
+  formatter = n => n
 ) => {
   class RetComp extends React.PureComponent {
     state = {
@@ -21,7 +22,7 @@ const buildDataProvider = (
       queryFn()
         .then((payload) => {
           this.setState({
-            [payloadKey]: payload,
+            [payloadKey]: formatter(payload),
             loading: false
           })
         })

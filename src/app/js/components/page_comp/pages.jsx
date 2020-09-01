@@ -5,7 +5,8 @@ import {
   EditIcon,
   PostIcon,
   AboutIcon,
-  PhotoIcon
+  PhotoIcon,
+  QuestionIcon
 } from '@zhoujiahao/bblego';
 import { isMobile, pick } from "@zhoujiahao/utils";
 
@@ -15,6 +16,7 @@ import { Posts } from './post_list'
 import { About } from './about';
 import { Photos } from "./photos";
 import { Articles } from "./article";
+import { Unknown } from "./unknown";
 
 const IS_MOBILE = isMobile();
 
@@ -68,6 +70,11 @@ export const pagesBuilder = (tools) => {
       title: '关于',
       icon: <AboutIcon />,
       component: <About context={{ CursorContext }} />
+    },
+    unknown: {
+      title: '未知',
+      icon: <QuestionIcon />,
+      component: <Unknown />
     }
   };
 
@@ -77,6 +84,7 @@ export const pagesBuilder = (tools) => {
     'articles',
     'photos',
     'about',
+    'unknown'
   ]);
 
   const MobilePages = pick(pages, [
