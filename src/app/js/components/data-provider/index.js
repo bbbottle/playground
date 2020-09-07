@@ -13,4 +13,4 @@ const getAudio = () => req(apiURL.audio);
 
 export const PostsProvider = buildDataProvider(getPosts, 'posts');
 export const PhotosProvider = buildDataProvider(getPhotosURL, 'photos')
-export const AudioProvider = buildDataProvider(getAudio, 'audio', tracks => tracks.filter(t => t.size))
+export const AudioProvider = buildDataProvider(getAudio, 'audio')

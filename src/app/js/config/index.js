@@ -6,7 +6,7 @@ export const OSSEndPoint = 'https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com';
 export const apiURL = {
   posts: `${apiEndPoint}/z/posts`,
   res: `${apiEndPoint}/res`,
-  audio: `${apiEndPoint}/audios`,
+  audio: `${apiEndPoint}/z/voice`,
   devRes: 'http://localhost:3000/res',
 };
 
