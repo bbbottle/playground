@@ -86,7 +86,7 @@ export const pagesBuilder = (tools) => {
     'articles',
     'photos',
     'about',
-    'unknown'
+    // 'unknown'
   ]);
 
   const MobilePages = pick(pages, [
