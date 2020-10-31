@@ -49,6 +49,7 @@ export const pagesBuilder = (tools) => {
     editor: {
       title: '编辑部',
       icon: <EditIcon />,
+      fullScreen: true,
       component: <WrappedEditor />,
     },
     posts: {
@@ -59,6 +60,7 @@ export const pagesBuilder = (tools) => {
     articles: {
       title: '杂记',
       icon: <PostIcon />,
+      fullScreen: true,
       component: <Articles context={{ BlogContext, CursorContext }} />,
     },
     photos: {
