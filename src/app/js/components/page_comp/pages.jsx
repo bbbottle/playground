@@ -16,7 +16,7 @@ import { Posts } from './post_list'
 import { About } from './about';
 import { Photos } from "./photos";
 import { Articles } from "./article";
-import { Unknown } from "./unknown";
+// import { Unknown } from "./unknown";
 
 const IS_MOBILE = isMobile();
 
@@ -73,11 +73,11 @@ export const pagesBuilder = (tools) => {
       icon: <AboutIcon />,
       component: <About context={{ CursorContext }} />
     },
-    unknown: {
-      title: '未知',
-      icon: <QuestionIcon />,
-      component: <Unknown />
-    }
+    // unknown: {
+    //   title: '未知',
+    //   icon: <QuestionIcon />,
+    //   component: <Unknown />
+    // }
   };
 
   const PcPages = pick(pages, [
