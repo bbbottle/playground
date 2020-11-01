@@ -1,13 +1,20 @@
 import React from 'react';
 
-import { TickLoader, Input } from '@zhoujiahao/bblego';
+import {
+  TickLoader,
+  IconText,
+  COLORS,
+  ErrorIcon,
+  YuQueIcon
+} from '@zhoujiahao/bblego';
 import './index.scss';
+import {YuQueAuth} from "./auth";
 
 class Editor extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      password: '',
+      error: '',
       loading: false
     };
     this.commands = [{
@@ -21,7 +28,7 @@ class Editor extends React.PureComponent {
     }];
   }
 
-  install = () => {
+  install = (authResult) => {
     this.setState({
       loading: true,
     });
@@ -30,7 +37,8 @@ class Editor extends React.PureComponent {
       .then(({ default: editorMod }) => {
         return editorMod.handler({
           user: 'z@zjh.im',
-          password: this.state.password,
+          password: authResult.secret,
+          token: authResult.token,
           dom: this.editorWrapper,
           commands: this.commands
         });
@@ -42,23 +50,42 @@ class Editor extends React.PureComponent {
       })
   }
 
-  handlePasswordChange = (e) => {
-    this.setState({ password: e.target.value });
-  };
 
-  renderForm = () => {
-    return (
-      <div className="keys">
-        <Input
-          type="password"
-          placeholder="钥匙"
-          onChange={this.handlePasswordChange}
-          onBlur={this.install}
-          autoComplete={false}
-          autoFocus={false}
-          autoSave={false}
+  handleAuthBtnClick = () => {
+    YuQueAuth()
+      .then(this.install)
+      .catch(() => {
+        this.setState({
+          error: '非编辑部成员'
+        })
+      })
+    return null;
+  }
+
+  renderAuthButton = () => {
+    if (this.state.error) {
+      return (
+        <IconText
+          color={COLORS.$red3}
+          icon={<ErrorIcon/>}
+          text={this.state.error}
         />
-      </div>
+      )
+    }
+
+    if (this.state.loading) {
+      return (
+        <TickLoader absCenter />
+      )
+    }
+
+    return (
+      <IconText
+        className="yuque-auth-btn clickable"
+        onClick={this.handleAuthBtnClick}
+        icon={<YuQueIcon />}
+        text="语雀登录"
+      />
     )
   };
 
@@ -68,7 +95,7 @@ class Editor extends React.PureComponent {
         className="posts-editor"
         ref={r => (this.editorWrapper = r)}
       >
-        {this.state.loading ? <TickLoader /> : this.renderForm()}
+        {this.renderAuthButton()}
       </div>
     )
   }

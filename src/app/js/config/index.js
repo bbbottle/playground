@@ -30,7 +30,13 @@ export const packageInfo = {
   gitURL: `https://github.com/zjhou/toyBox/releases/tag/${name}@${version}`
 };
 
-export const yuQueAuthUrl = 'https://www.yuque.com/oauth2/authorize?client_id=ab7VkEGAfseQU3ecnLNq&scope=doc,repo&redirect_uri=https://api.zjh.im/auth/yuque&response_type=code';
+export const yuQueAuth = {
+  authorizationUri: 'https://www.yuque.com/oauth2/authorize',
+  clientId: 'ab7VkEGAfseQU3ecnLNq',
+  redirectUri: 'https://api.zjh.im/auth/editor',
+  scope: 'doc,repo'
+}
+export const yuQueAuthUrl = 'https://www.yuque.com/oauth2/authorize?client_id=ab7VkEGAfseQU3ecnLNq&scope=doc,repo&redirect_uri=https://api.zjh.im/auth/editor&response_type=code';
 export const GitHubProfileUrl = 'https://github.com/zjhou';
 export const tmpBlurryThumbnailUrlSuffix = '?x-oss-process=style/thumbnail';
 export const tmpWebpUrlSuffix = '?x-oss-process=style/webp';
