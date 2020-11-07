@@ -1,4 +1,4 @@
-import { yuQueAuthUrl } from "../../../../config";
+import { yuQueAuthUrl } from "../../../../../config";
 
 let authWindowRef = null;
 

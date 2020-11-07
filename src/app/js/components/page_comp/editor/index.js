@@ -2,10 +2,6 @@ import React from 'react';
 import hash from 'object-hash';
 
 import {
-  getYuQueDocs
-} from '../../data-provider';
-
-import {
   TickLoader,
   IconText,
   COLORS,
@@ -13,8 +9,12 @@ import {
   YuQueIcon
 } from '@zhoujiahao/bblego';
 import './index.scss';
-import {YuQueAuth} from "./auth";
+import {
+  YuQueAuth,
+  genYuQueCommands
+} from './yuque/';
 
+const authResultKey = 'auth-result';
 class Editor extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -33,50 +33,34 @@ class Editor extends React.PureComponent {
     }];
   }
 
+  componentDidMount() {
+    const authResult = this.loadAuthResult();
+    if (authResult) {
+      this.install(authResult);
+    }
+  }
+
   genTmpId = (title) => {
     return hash(title).slice(16);
   }
 
-  genYuQueCommands = (token) => ([{
-    name: 'yq',
-    fn: (toast, cm, cmd, postManager) => {
-      const {
-        postListUpdater,
-        loading,
-        Persistor,
-        active
-      } = postManager;
-      loading(true);
-      getYuQueDocs(token)
-        .then((posts) => {
-          postListUpdater((oldPosts) => {
-            return [
-              ...posts.map(p => {
-                const postId = this.genTmpId(p.title);
-                const fullPost = {
-                  ...p,
-                  id: postId,
-                  postType: 'draft'
-                };
-                Persistor.set(postId, fullPost);
-                return fullPost;
-              }),
-              ...oldPosts
-            ];
-          })
-          active(0);
-          toast.success('语雀文档加载完毕')
-        })
-        .catch(() => {
-          toast.error('语雀文档加载出错')
-        })
-        .finally(() => {
-          loading(false);
-        })
+  clearAuthResult = () => {
+    localStorage.removeItem(authResultKey);
+  };
+
+  saveAuthResult = (authResult) => {
+    localStorage.setItem(authResultKey, JSON.stringify(authResult));
+  };
+
+  loadAuthResult = () => {
+    const result = localStorage.getItem(authResultKey)
+    if (result) {
+      return JSON.parse(result);
     }
-  }])
+  }
 
   install = (authResult) => {
+    this.saveAuthResult(authResult);
     this.setState({
       loading: true,
     });
@@ -90,11 +74,12 @@ class Editor extends React.PureComponent {
           dom: this.editorWrapper,
           commands: [
             ...this.commands,
-            ...this.genYuQueCommands(authResult.token)
+            ...genYuQueCommands(authResult.token)
           ]
         });
       })
       .finally(() => {
+        this.clearAuthResult();
         this.setState({
           loading: false,
         });
