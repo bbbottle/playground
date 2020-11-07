@@ -10,6 +10,7 @@ import {
 } from '@zhoujiahao/bblego';
 import { isMobile, pick } from "@zhoujiahao/utils";
 
+import { Columns } from '../util_comp/layout';
 import { Design } from './design';
 import { Editor } from './editor';
 import { Posts } from './post_list'
@@ -61,7 +62,11 @@ export const pagesBuilder = (tools) => {
       title: '杂记',
       icon: <PostIcon />,
       fullScreen: true,
-      component: <Articles context={{ BlogContext, CursorContext }} />,
+      component: (
+        <Columns
+          cols={[null, <Posts />, null]}
+        />
+      )
     },
     photos: {
       title: '照片',

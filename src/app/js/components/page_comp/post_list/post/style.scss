@@ -1,10 +1,14 @@
+.post:last-child {
+  margin-bottom: 193px;
+}
 .post-title {
   margin: 193px 0 108px 0;
   font-size: 32px;
 }
 
 .post-content {
-  line-height: $content-line-height;
+  line-height: 2;
+  text-align: justify;
 }
 
 .post-content img {

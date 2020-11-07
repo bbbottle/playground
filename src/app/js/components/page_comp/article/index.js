@@ -31,7 +31,7 @@ export const Articles = ({ context }) => {
       {({ posts }) => {
         return (
           <PagingManager
-            data={posts}
+            data={posts.reverse()}
             pageSize={1}
             infiniteLoopMode
           >
