@@ -11,6 +11,7 @@ const getPhotosURL = () => req(apiURL.res).then(extractPhotosUrl);
 const getPosts = () => req(apiURL.posts);
 const getAudio = () => req(apiURL.audio);
 
+export const getYuQueDocs = (token) => req(apiURL.posts + '?token=' + token);
 export const PostsProvider = buildDataProvider(getPosts, 'posts');
 export const PhotosProvider = buildDataProvider(getPhotosURL, 'photos')
 export const AudioProvider = buildDataProvider(getAudio, 'audio')

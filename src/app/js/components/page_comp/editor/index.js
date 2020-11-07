@@ -1,6 +1,10 @@
 import React from 'react';
 
 import {
+  getYuQueDocs
+} from '../../data-provider';
+
+import {
   TickLoader,
   IconText,
   COLORS,
@@ -28,6 +32,34 @@ class Editor extends React.PureComponent {
     }];
   }
 
+  genYuQueCommands = (token) => ([{
+    name: 'yq',
+    fn: (toast, cm, cmd, postManager) => {
+      const {
+        postListUpdater,
+        loading,
+        active
+      } = postManager;
+      loading(true);
+      getYuQueDocs(token)
+        .then((posts) => {
+          postListUpdater((oldPosts) => {
+            return [
+              ...posts.map(p => ({ ...p, postType: 'draft'})),
+              ...oldPosts
+            ];
+          })
+          toast.success('语雀文档加载完毕')
+        })
+        .catch(() => {
+          toast.error('语雀文档加载出错')
+        })
+        .finally(() => {
+          loading(false);
+        })
+    }
+  }])
+
   install = (authResult) => {
     this.setState({
       loading: true,
@@ -40,7 +72,10 @@ class Editor extends React.PureComponent {
           password: authResult.secret,
           token: authResult.token,
           dom: this.editorWrapper,
-          commands: this.commands
+          commands: [
+            ...this.commands,
+            ...this.genYuQueCommands(authResult.token)
+          ]
         });
       })
       .finally(() => {
