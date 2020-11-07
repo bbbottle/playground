@@ -9,21 +9,13 @@ import { PostsProvider } from "../../data-provider";
 
 import './index.scss'
 
-const wrapTitle = (title = '') => {
-  const cleanTitle = title
-    .replace('《', '')
-    .replace('》', '');
-
-  return `《${cleanTitle}》`;
-}
-
 const Article = ({
   title, content, actions, progress, ...rest
 }) => {
   return (
     <Layout
       progress={progress}
-      left={wrapTitle(title)}
+      left={title}
       rightTop={<HTML md={content} />}
       rightBottom={actions}
       {...rest}
