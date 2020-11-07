@@ -1,4 +1,5 @@
 import React from 'react';
+import hash from 'object-hash';
 
 import {
   getYuQueDocs
@@ -32,12 +33,17 @@ class Editor extends React.PureComponent {
     }];
   }
 
+  genTmpId = (title) => {
+    return hash(title).slice(16);
+  }
+
   genYuQueCommands = (token) => ([{
     name: 'yq',
     fn: (toast, cm, cmd, postManager) => {
       const {
         postListUpdater,
         loading,
+        Persistor,
         active
       } = postManager;
       loading(true);
@@ -45,10 +51,20 @@ class Editor extends React.PureComponent {
         .then((posts) => {
           postListUpdater((oldPosts) => {
             return [
-              ...posts.map(p => ({ ...p, postType: 'draft'})),
+              ...posts.map(p => {
+                const postId = this.genTmpId(p.title);
+                const fullPost = {
+                  ...p,
+                  id: postId,
+                  postType: 'draft'
+                };
+                Persistor.set(postId, fullPost);
+                return fullPost;
+              }),
               ...oldPosts
             ];
           })
+          active(0);
           toast.success('语雀文档加载完毕')
         })
         .catch(() => {
