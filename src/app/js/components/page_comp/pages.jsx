@@ -16,26 +16,15 @@ import { Editor } from './editor';
 import { Posts } from './post_list'
 import { About } from './about';
 import { Photos } from "./photos";
-import { Articles } from "./article";
+import { CursorContext } from '../util_comp/cursor';
 // import { Unknown } from "./unknown";
 
 const IS_MOBILE = isMobile();
 
 export const pagesBuilder = (tools) => {
-  const {
-    Context,
-  } = tools;
-
-  const {
-    CursorContext,
-    BlogContext,
-  } = Context;
-
   const WrappedEditor = () => {
-    const {
-      openMenu,
-      gotoPage
-    } = React.useContext(BlogContext);
+    const openMenu = () => {};
+    const gotoPage = () => {};
     return (
       <Editor openMenu={openMenu} gotoPage={gotoPage} />
     )
@@ -87,7 +76,7 @@ export const pagesBuilder = (tools) => {
 
   const PcPages = pick(pages, [
     'design',
-    'editor',
+    // 'editor',
     'articles',
     'photos',
     'about',
