@@ -1,14 +1,26 @@
-export const isMatchMinSize = (boxProps) => {
+export const isMatchMinSize = (boxProps, min = 200) => {
   const {
     width: w,
     height: h,
-    boxIndex: i,
   } = boxProps
 
-  return w > 200 && h > 200;
+  return w > min && h > min;
+}
+
+export const isMatchMaxSize = (boxProps, max = 900) => {
+  const {
+    width: w,
+    height: h,
+  } = boxProps
+
+  return w < max && h < max;
 }
 
 export const showPhotoBox = (boxProps) => {
-  const { boxIndex } = boxProps;
-  return isMatchMinSize(boxProps) && boxIndex % 2 === 0;
+  return isMatchMinSize(boxProps)
+    && isMatchMaxSize(boxProps, 500);
 };
+
+export const showDesignBox = (boxProps) => {
+  return isMatchMinSize(boxProps, 500);
+}

@@ -1,7 +1,10 @@
-import { showPhotoBox } from './matcher';
-import { PhotoBox } from './renderer';
+import React from 'react';
+import {showDesignBox, showPhotoBox} from './matcher';
+import {DesignFrame, PhotoBox} from './renderer';
 
 const BOX_PATTERN_RENDER_MAP = new Map();
+
+BOX_PATTERN_RENDER_MAP.set(showDesignBox, DesignFrame)
 BOX_PATTERN_RENDER_MAP.set(showPhotoBox, PhotoBox)
 
 const getBoxRenderer = (map, props) => {
@@ -20,7 +23,7 @@ const getBoxRenderer = (map, props) => {
 }
 
 export const boxRenderer = (props) => {
-  const renderer = getBoxRenderer(BOX_PATTERN_RENDER_MAP, props)
-  return renderer(props);
+  const Renderer = getBoxRenderer(BOX_PATTERN_RENDER_MAP, props)
+  return <Renderer {...props} />
 }
 
