@@ -1,0 +1,150 @@
+@mixin fullscreen {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin active-list-before {
+  &:before {
+    content: '·';
+    position: absolute;
+    margin-left: -1 * $padding-2;
+    font-weight: bolder;
+  }
+}
+
+.pseudo-icon {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-size: auto;
+}
+
+@mixin after-hover-icon($url, $isMobile: false) {
+  @if not $isMobile {
+    &:hover:after {
+      @extend .pseudo-icon;
+      background: url($url) no-repeat;
+    }
+  }
+
+  @if $isMobile {
+    &:after {
+      @extend .pseudo-icon;
+      background: url($url) no-repeat;
+    }
+  }
+}
+
+@mixin withBlurCover($width: 100%, $height: 100%, $blur: 5px) {
+  & {
+    position: relative;
+  }
+  &:before {
+    content: '';
+    width: $width;
+    height: $height;
+    position: absolute;
+    backdrop-filter: blur($blur);
+    transition: backdrop-filter .5s;
+    pointer-events: none;
+  }
+
+  &:hover:before {
+    backdrop-filter: blur(0);
+  }
+}
+
+@mixin shadow($shadowColor: $gray-3, $depth: 5px, $duration: 1s) {
+  transform: translate(0, 0);
+  box-shadow: $shadowColor $depth $depth 0 0;
+  border: solid 1px $shadowColor;
+  transition: border $duration;
+}
+
+@mixin hover-sink-effect($shadowColor: $gray-3, $depth: 5px, $duration: 1s, $btnMode: false) {
+  @include shadow($shadowColor, $depth, $duration);
+
+  @if $btnMode {
+    &:active {
+      transform: translate($depth, $depth);
+      box-shadow: $gray-3 0 0 0 0;
+      border: solid 1px #fff;
+    }
+  }
+
+  @if not $btnMode {
+    &:hover {
+      transform: translate($depth, $depth);
+      box-shadow: $gray-3 0 0 0 0;
+      border: solid 1px #fff;
+    }
+  }
+}
+
+
+@mixin popup($shadowColor: $gray-3, $depth: 3px, $duration: .5s) {
+  @keyframes popup {
+    from {
+      box-shadow: $shadowColor 0 0 0 0;
+      transform: translate($depth, $depth);
+    }
+    to {
+      box-shadow: $shadowColor $depth $depth 0 0;
+      transform: translate(0, 0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+  }
+
+  $timingFn: cubic-bezier(0.99, 0.01, 0.05, 1.01);
+
+  & > * {
+    opacity: 0;
+    animation: $duration $timingFn $duration / 1.5 fadeIn forwards;
+  }
+
+  border: solid 1px $shadowColor;
+  animation: popup $duration $timingFn forwards;
+
+  &:hover {
+    box-shadow: $shadowColor $depth - 2px $depth - 2px 0 0 !important;
+    transform: translate(2px, 2px) !important;
+  }
+}
+
+@mixin grainy($imgPath) {
+  position: relative;
+  overflow: hidden;
+  &:after {
+    animation: grain 8s steps(10) infinite;
+    background: url($imgPath);
+    content: "";
+    height: 300%;
+    left: -50%;
+    opacity: 0.1;
+    position: absolute;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    top: -110%;
+    width: 300%;
+  }
+}
+
+@keyframes grain {
+  0%, 100% { transform:translate(0, 0) }
+  10% { transform:translate(-5%, -10%) }
+  20% { transform:translate(-15%, 5%) }
+  30% { transform:translate(7%, -25%) }
+  40% { transform:translate(-5%, 25%) }
+  50% { transform:translate(-15%, 10%) }
+  60% { transform:translate(15%, 0%) }
+  70% { transform:translate(0%, 15%) }
+  80% { transform:translate(3%, 35%) }
+  90% { transform:translate(-10%, 10%) }
+}
+

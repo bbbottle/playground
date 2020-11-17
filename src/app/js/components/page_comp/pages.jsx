@@ -13,6 +13,7 @@ import { isMobile, pick } from "@zhoujiahao/utils";
 import { Columns } from '../util_comp/layout';
 import { Design } from './design';
 import { Editor } from './editor';
+import { CanvasPage } from './canvas';
 import { Posts } from './post_list'
 import { About } from './about';
 import { Photos } from "./photos";
@@ -67,6 +68,11 @@ export const pagesBuilder = (tools) => {
       icon: <AboutIcon />,
       component: <About context={{ CursorContext }} />
     },
+    canvas: {
+      title: '画板',
+      icon: <RulerIcon />,
+      component: <CanvasPage />
+    },
     // unknown: {
     //   title: '未知',
     //   icon: <QuestionIcon />,
@@ -75,12 +81,11 @@ export const pagesBuilder = (tools) => {
   };
 
   const PcPages = pick(pages, [
-    'design',
+    // 'design',
     // 'editor',
     'articles',
-    'photos',
     'about',
-    // 'unknown'
+    'canvas'
   ]);
 
   const MobilePages = pick(pages, [
