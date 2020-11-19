@@ -17,7 +17,7 @@ export const MenuBtn = ({
       type="button"
       style={style}
       className={cn('menu-button', className, {
-        hidden
+        show: !hidden
       })}
       onClick={onClick}
     />

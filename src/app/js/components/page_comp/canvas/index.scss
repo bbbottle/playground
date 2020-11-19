@@ -33,15 +33,16 @@
 
   .preview-box {
     position: absolute;
-    border: solid 1px #0078d7;
-    background: #b9d5f1;
+    border: solid 1px $gray-5;
+    background: $gray-6;
     opacity: 1;
     transition: opacity .3s, background .3s;
     overflow: visible;
-    color: #087bd7;
+    color: $gray-4;
 
     &:after {
-      min-width: 65px;
+      min-width: 300px;
+      text-align: right;
       content: attr(data-size);
       display: block;
       position: absolute;
@@ -52,7 +53,7 @@
     }
 
     &.active {
-      border: solid 1px $green-1;
+      border: solid 1px $green-3;
       background: $green-5;
       opacity: .9;
       color: $green-2;
@@ -62,20 +63,30 @@
   .toolbar {
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
     padding: 5px;
+  }
 
-    .delete {
-      color: #999;
-      transition: color .3s;
-      border: none;
-      background: none;
-      outline: none;
-      cursor: pointer;
+  .delete {
+    color: #999;
+    transition: color .3s;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
 
-      &:hover {
-        color: $red-3;
-      }
+    &.big {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    &.black {
+      color: black;
+    }
+
+    &.red,
+    &:hover {
+      color: $red-3;
     }
   }
 }

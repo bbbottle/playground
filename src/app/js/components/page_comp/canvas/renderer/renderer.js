@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import cn from 'classnames';
 import PropTypes from 'prop-types';
 import { TickLoader } from '@zhoujiahao/bblego';
 
@@ -19,15 +20,22 @@ export const WhiteBoard = (props) => {
   )
 }
 
+export const DelBtn = (props) => {
+  return (
+    <button
+      style={props.style || {}}
+      className={cn("delete", props.className)}
+      onClick={props.onClick}
+    >
+      ✕
+    </button>
+  )
+};
+
 export const ToolBar = (props) => {
   return (
     <div className="toolbar">
-      <button
-        className="delete"
-        onClick={props.remove}
-      >
-        ✕
-      </button>
+      <DelBtn onClick={props.remove} />
     </div>
   )
 };
@@ -67,6 +75,7 @@ export const DesignFrame = (props) => {
         src={FigmaLiveAddr}
       />
       { loading && <TickLoader absCenter /> }
+      <ToolBar {...props} />
     </WhiteBoard>
   )
 }

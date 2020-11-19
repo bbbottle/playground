@@ -7,17 +7,19 @@
   width: 25px;
   height: 26px;
   border-radius: 0;
-  opacity: 1;
-  box-shadow: #6bcba88f -5px -5px 0 0, #6bcba859 -10px -10px 0 0;
+  opacity: 0;
+  box-shadow: #6bcba88f -8px -8px 3px 0, #6bcba859 -20px -20px 10px 0;
   background: $green-1;
   z-index: 1;
   transition: all .3s;
   cursor: pointer;
+  pointer-events: none;
 
-  &.hidden {
-    opacity: 0;
-    pointer-events: none;
-    box-shadow: #6bcba88f -8px -8px 3px 0, #6bcba859 -20px -20px 10px 0;
+  &.show {
+    pointer-events: all;
+    transition-delay: .3s;
+    opacity: 1;
+    box-shadow: #6bcba88f -5px -5px 0 0, #6bcba859 -10px -10px 0 0;
   }
 
   &:active {

@@ -10,7 +10,8 @@ import {
 import {
   emptyRender,
   DesignFrame,
-  PhotoBox
+  PhotoBox,
+  DelBtn
 } from './renderer';
 
 const rendererMatcherMatrix = [
@@ -44,3 +45,17 @@ export const previewBoxRenderer = (style) => {
     />
   );
 };
+
+export const clearButtonRenderer = (props) => {
+  return (
+    <DelBtn
+      onClick={props.clear}
+      className="big black"
+      style={{
+        position: "absolute",
+        right: 50,
+        top: 50
+      }}
+    />
+  )
+}
