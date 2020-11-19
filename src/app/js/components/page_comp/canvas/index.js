@@ -1,6 +1,9 @@
 import React from 'react';
 import { BoxCanvas } from '@bbbottle/box-canvas'
-import { boxRenderer } from './renderer/';
+import {
+  staticBoxRenderer,
+  previewBoxRenderer
+} from './renderer/';
 import './index.scss';
 
 export const CanvasPage = () => {
@@ -8,7 +11,8 @@ export const CanvasPage = () => {
     <div className="canvas-page">
       <BoxCanvas
         attachLineGutter={4}
-        staticBoxRenderer={boxRenderer}
+        staticBoxRenderer={staticBoxRenderer}
+        previewBoxRenderer={previewBoxRenderer}
       />
     </div>
   )

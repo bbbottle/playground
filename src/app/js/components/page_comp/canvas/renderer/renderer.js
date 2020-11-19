@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { TickLoader } from '@zhoujiahao/bblego';
 
 import {Photos} from '../../photos';
@@ -18,14 +19,33 @@ export const WhiteBoard = (props) => {
   )
 }
 
-export const PhotoBox = () => {
+export const ToolBar = (props) => {
+  return (
+    <div className="toolbar">
+      <button
+        className="delete"
+        onClick={props.remove}
+      >
+        ✕
+      </button>
+    </div>
+  )
+};
+
+ToolBar.propTypes = {
+  remove: PropTypes.func.isRequired,
+}
+
+export const PhotoBox = (props) => {
   return (
     <WhiteBoard padding={10}>
       <Photos context={{ CursorContext }} />
+      <ToolBar {...props} />
     </WhiteBoard>
   );
 }
 
+export const emptyRender = () => null;
 export const DesignFrame = (props) => {
   const {
     width, height

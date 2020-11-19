@@ -1,4 +1,7 @@
 .canvas-page {
+  * {
+    user-select: none;
+  }
   height: 100%;
 
   $canvasBackgroundColor: #fff;
@@ -27,4 +30,52 @@
   //background-image:
   //  linear-gradient(to right, #f0f0f0 1px, transparent 1px),
   //  linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+
+  .preview-box {
+    position: absolute;
+    border: solid 1px #0078d7;
+    background: #b9d5f1;
+    opacity: 1;
+    transition: opacity .3s, background .3s;
+    overflow: visible;
+    color: #087bd7;
+
+    &:after {
+      min-width: 65px;
+      content: attr(data-size);
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      padding: 5px 10px;
+      font-size: 10px;
+    }
+
+    &.active {
+      border: solid 1px $green-1;
+      background: $green-5;
+      opacity: .9;
+      color: $green-2;
+    }
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px;
+
+    .delete {
+      color: #999;
+      transition: color .3s;
+      border: none;
+      background: none;
+      outline: none;
+      cursor: pointer;
+
+      &:hover {
+        color: $red-3;
+      }
+    }
+  }
 }

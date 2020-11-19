@@ -1,29 +1,46 @@
 import React from 'react';
-import {showDesignBox, showPhotoBox} from './matcher';
-import {DesignFrame, PhotoBox} from './renderer';
+import cn from 'classnames';
 
-const BOX_PATTERN_RENDER_MAP = new Map();
+import {
+  showDesignBox,
+  showPhotoBox,
+  falsyMatcher,
+} from './matcher';
 
-BOX_PATTERN_RENDER_MAP.set(showDesignBox, DesignFrame)
-BOX_PATTERN_RENDER_MAP.set(showPhotoBox, PhotoBox)
+import {
+  emptyRender,
+  DesignFrame,
+  PhotoBox
+} from './renderer';
 
-const getBoxRenderer = (map, props) => {
-  const defaultBoxRenderer = () => null;
-  const defaultMatcherRendererPair = [
-    () => false,
-    defaultBoxRenderer,
-  ];
+const rendererMatcherMatrix = [
+  [DesignFrame, showDesignBox],
+  [PhotoBox, showPhotoBox]
+];
 
-  const [
-    matcher, renderer
-  ] = [...map.entries()].find(([m]) => m(props))
-  || defaultMatcherRendererPair
+const getBoxRenderer = (matrix, props) => {
+  const defaultRendererMatcherPair = [emptyRender, falsyMatcher];
+  const [ renderer ] = matrix.find(([r,m]) => m(props))
+  || defaultRendererMatcherPair;
 
   return renderer;
 }
 
-export const boxRenderer = (props) => {
-  const Renderer = getBoxRenderer(BOX_PATTERN_RENDER_MAP, props)
+export const staticBoxRenderer = (props) => {
+  const Renderer = getBoxRenderer(rendererMatcherMatrix, props)
   return <Renderer {...props} />
-}
+};
 
+export const previewBoxRenderer = (style) => {
+  const active = showDesignBox(style)
+    || showPhotoBox(style);
+
+  const sizeStr = `${style.width}px ${style.height}px`;
+  return (
+    <div
+      style={style}
+      className={cn('preview-box',{ active })}
+      data-size={sizeStr}
+    />
+  );
+};

@@ -24,3 +24,5 @@ export const showPhotoBox = (boxProps) => {
 export const showDesignBox = (boxProps) => {
   return isMatchMinSize(boxProps, 500);
 }
+
+export const falsyMatcher = () => false;
