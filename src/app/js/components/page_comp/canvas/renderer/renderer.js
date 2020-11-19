@@ -72,6 +72,7 @@ export const DesignFrame = (props) => {
         width={width}
         frameBorder='none'
         height={height}
+        style={{position: 'absolute'}}
         src={FigmaLiveAddr}
       />
       { loading && <TickLoader absCenter /> }

@@ -53,8 +53,8 @@ export const clearButtonRenderer = (props) => {
       className="big black"
       style={{
         position: "absolute",
-        right: 50,
-        top: 50
+        right: '50%',
+        bottom: 50
       }}
     />
   )
