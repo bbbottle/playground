@@ -9,7 +9,8 @@
   "author": "zjhou",
   "license": "ISC",
   "dependencies": {
-    "@zhoujiahao/blog": "^2.0.1",
+    "@bbbottle/box-canvas": "^0.2.10",
+    "@bbbottle/page-menu": "^0.1.3",
     "@zhoujiahao/utils": "^1.0.20"
   },
   "devDependencies": {
