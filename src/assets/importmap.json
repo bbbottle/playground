@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "rxjs": "/assets/rxjs.umd.min.js",
+    "classnames": "/assets/bind.js",
+    "immer": "/assets/immer.umd.production.min.js",
+    "react-dom": "/assets/react-dom.production.min.js",
+    "react": "/assets/react.production.min.js",
+    "prop-types": "/assets/prop-types.min.js"
+  }
+}
