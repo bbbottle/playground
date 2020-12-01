@@ -8,6 +8,9 @@
   },
   "author": "zjhou",
   "license": "ISC",
+  "dependencies": {
+    "@bbbottle/zjh.im": "^0.0.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
