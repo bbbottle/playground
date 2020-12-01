@@ -2,10 +2,10 @@
 *.iml
 .gitignore
 .gitattributes
-.npmrc
 .package-lock.json
 src/node_modules
 node_modules
+dist
 src/dist/assets
 src/dist/index.html
 src/dist/sw.js

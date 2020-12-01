@@ -1,0 +1,52 @@
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+@keyframes tick {
+    0% {
+        width: 6px;
+        background: #c2eade;
+    }
+    50% { width: 12px; background: #51c49f; }
+    100% {
+        width: 6px;
+        background: #c2eade;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.tickLoader:before,
+.tickLoader:after {
+    content: '';
+    display: block;
+    width: 6px;
+    background: #51c49f;
+    height: 1px;
+}
+
+.tickLoader:before {
+    margin-bottom: 5px;
+    animation: tick .5s infinite;
+}
+
+.tickLoader:after {
+    animation: tick .5s infinite reverse;
+}
+
+#gui {
+    flex: 1 1 auto;
+    justify-content: center;
+    align-items: center;
+}

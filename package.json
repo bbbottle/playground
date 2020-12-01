@@ -3,17 +3,29 @@
   "version": "2.8.4",
   "description": "https://zjh.im",
   "scripts": {
-    "build": "z-build release",
-    "dev": "z-build dev"
+    "build": "rollup -c",
+    "dev": "rollup -c --watch"
   },
   "author": "zjhou",
   "license": "ISC",
-  "dependencies": {
-    "@zhoujiahao/blog": "^2.0.1",
-    "@zhoujiahao/utils": "^1.0.20"
-  },
   "devDependencies": {
-    "@zhoujiahao/build-zjh-im": "1.0.75",
-    "@zhoujiahao/vendor": "1.0.22"
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-export-default-from": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "@rollup/plugin-replace": "^2.3.4",
+    "@svgr/rollup": "^5.5.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-input-array": "^1.0.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }
