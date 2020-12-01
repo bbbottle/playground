@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>z</title>
+    <title>zjh.im</title>
     <meta charset="UTF-8"/>
     <meta name="referrer" content="no-referrer"/>
     <meta
@@ -11,68 +11,14 @@
     <meta name="theme-color" content="#fff">
     <meta name="Description" content="zjh's blog">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
-    <script src="assets/system.min.js"></script>
-    <script type="systemjs-importmap" src="assets/importmap.json">
-    </script>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            width: 100vw;
-            height: 100vh;
-        }
-
-        .center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-        }
-
-        @keyframes tick {
-            0% {
-                width: 6px;
-                background: #c2eade;
-            }
-            50% { width: 12px; background: #51c49f; }
-            100% {
-                width: 6px;
-                background: #c2eade;
-            }
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        .tickLoader:before,
-        .tickLoader:after {
-            content: '';
-            display: block;
-            width: 6px;
-            background: #51c49f;
-            height: 1px;
-        }
-
-        .tickLoader:before {
-            margin-bottom: 5px;
-            animation: tick .5s infinite;
-        }
-
-        .tickLoader:after {
-            animation: tick .5s infinite reverse;
-        }
-
-        #gui {
-            flex: 1 1 auto;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/global.css">
+    <script type="systemjs-importmap" src="assets/importmap.json"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.8.1/system.min.js"></script>
 </head>
 <body style="margin: 0; padding: 0;">
-<div id="gui">
-    <div class="tickLoader center"></div>
-</div>
-<script type="systemjs-module" src="assets/entry.js"></script>
+    <div id="gui">
+        <div class="tickLoader center"></div>
+    </div>
+    <script type="systemjs-module" src="assets/index.js"></script>
 </body>
 </html>

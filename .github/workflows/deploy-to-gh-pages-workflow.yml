@@ -31,7 +31,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm install
-      - run: npm i -s @bbbottle/box-canvas @bbbottle/page-menu --registry=https://npm.pkg.github.com/
+      - run: npm i -s @bbbottle/zjh.im --registry=https://npm.pkg.github.com/
       - run: npm run build
 
       - name: Deploy

@@ -1,37 +1,30 @@
 import babel from 'rollup-plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
-
+import clear from 'rollup-plugin-clear'
 import resolve from 'rollup-plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 import copy from 'rollup-plugin-copy'
+import { terser } from "rollup-plugin-terser";
 
-const vendorPaths = [
-  'node_modules/classnames/bind.js',
-  'node_modules/prop-types/prop-types.min.js',
-  'node_modules/immer/dist/immer.umd.production.min.js',
-  'node_modules/react/umd/react.production.min.js',
-  'node_modules/react-dom/umd/react-dom.production.min.js',
-  'node_modules/rxjs/bundles/rxjs.umd.min.js',
-  'node_modules/systemjs/dist/s.min.js',
-  'node_modules/systemjs/dist/system.min.js',
-];
 
 export default {
-  input: 'src/assets/index.js',
+  input: ['src/assets/index.js'],
   output: [
     {
       sourcemap: false,
-      file: './dist/assets/entry.js',
+      dir: './dist/assets',
       format: 'system',
     },
   ],
   plugins: [
     resolve(),
+    clear({
+      target: ['dist/assets']
+    }),
     copy({
       targets: [
         { src: 'src/index.html', dest: 'dist/' },
         { src: 'src/assets', dest: 'dist/' },
-
-        ...vendorPaths.map(p => ({src: p, dest: 'dist/assets/'})),
       ]
     }),
     babel({
@@ -42,6 +35,10 @@ export default {
         "@babel/plugin-proposal-class-properties"
       ]
     }),
-    commonjs()
+    replace({
+      'process.env.NODE_ENV': "'production'",
+    }),
+    commonjs(),
+    terser()
   ],
 };

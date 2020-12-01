@@ -1,10 +1,10 @@
 {
   "imports": {
-    "rxjs": "/assets/rxjs.umd.min.js",
-    "classnames": "/assets/bind.js",
-    "immer": "/assets/immer.umd.production.min.js",
-    "react-dom": "/assets/react-dom.production.min.js",
-    "react": "/assets/react.production.min.js",
-    "prop-types": "/assets/prop-types.min.js"
+    "rxjs": "https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.6.3/rxjs.umd.min.js",
+    "classnames": "https://cdnjs.cloudflare.com/ajax/libs/classnames/2.2.6/index.min.js",
+    "immer": "https://cdnjs.cloudflare.com/ajax/libs/immer/8.0.0/immer.umd.production.min.js",
+    "react": "https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.production.min.js",
+    "react-dom": "https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.production.min.js",
+    "prop-types": "https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.min.js"
   }
 }
