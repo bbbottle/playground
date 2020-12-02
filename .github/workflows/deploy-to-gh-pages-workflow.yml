@@ -30,10 +30,9 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - run: 
-          echo -e "//npm.pkg.github.com/:_authToken=${READ_GH_PKG_TOKEN}\n" > .npmrc
-          echo -e "@bbbottle:registry=https://npm.pkg.github.com\n" >> .npmrc
-          echo -e "always-auth=true\n" >> .npmrc
+      - run: echo -e "//npm.pkg.github.com/:_authToken=${READ_GH_PKG_TOKEN}" > .npmrc
+      - run: echo -e "@bbbottle:registry=https://npm.pkg.github.com" >> .npmrc
+      - run: echo -e "always-auth=true" >> .npmrc
       - run: npm install && npm run build
 
       - name: Deploy
