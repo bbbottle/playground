@@ -1,6 +1,6 @@
 {
   "name": "zjh",
-  "version": "2.8.4",
+  "version": "3.0.26",
   "description": "https://zjh.im",
   "scripts": {
     "build": "rollup -c",
