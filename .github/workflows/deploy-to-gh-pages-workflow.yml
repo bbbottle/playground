@@ -31,10 +31,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: 
-          echo "registry=https://registry.yarnpkg.com/" > .npmrc
-          echo "@bbbottle:registry=https://npm.pkg.github.com" >> .npmrc
-          echo "//npm.pkg.github.com/:_authToken=${READ_GH_PKG_TOKEN}" >> .npmrc
-          echo "always-auth=true" >> .npmrc
+          echo -e "registry=https://registry.yarnpkg.com/\n" > .npmrc
+          echo -e "@bbbottle:registry=https://npm.pkg.github.com\n" >> .npmrc
+          echo -e "//npm.pkg.github.com/:_authToken=${READ_GH_PKG_TOKEN}\n" >> .npmrc
+          echo -e "always-auth=true\n" >> .npmrc
       - run: npm install && npm run build
 
       - name: Deploy
