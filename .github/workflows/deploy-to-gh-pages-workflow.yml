@@ -41,6 +41,6 @@ jobs:
           personal_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           external_repository: zjhou/zjhou.github.io
           publish_branch: master
-          publish_dir: ./src/dist
+          publish_dir: ./dist
           tag_name: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
           tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'
