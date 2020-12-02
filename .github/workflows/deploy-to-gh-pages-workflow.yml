@@ -31,9 +31,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: 
-          echo -e "registry=https://registry.yarnpkg.com/\n" > .npmrc
+          echo -e "//npm.pkg.github.com/:_authToken=${READ_GH_PKG_TOKEN}\n" > .npmrc
           echo -e "@bbbottle:registry=https://npm.pkg.github.com\n" >> .npmrc
-          echo -e "//npm.pkg.github.com/:_authToken=${READ_GH_PKG_TOKEN}\n" >> .npmrc
           echo -e "always-auth=true\n" >> .npmrc
       - run: npm install && npm run build
 
