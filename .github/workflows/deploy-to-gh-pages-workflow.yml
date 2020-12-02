@@ -30,11 +30,12 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
-      - name: Install dependencies and build
-        uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: install && build
+      - run: 
+          echo "registry=https://registry.yarnpkg.com/" > .npmrc
+          echo "@bbbottle:registry=https://npm.pkg.github.com" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${READ_GH_PKG_TOKEN}" >> .npmrc
+          echo "always-auth=true" >> .npmrc
+      - run: npm install && npm run build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
