@@ -33,10 +33,9 @@ jobs:
 
       - name: Install dependencies and build
       - uses: borales/actions-yarn@v2.0.0
-        with:
-          run: |
-            install"
-            build
+        run: |
+          install"
+          build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
