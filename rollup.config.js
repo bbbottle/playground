@@ -24,6 +24,7 @@ export default {
     copy({
       targets: [
         { src: 'src/index.html', dest: 'dist/' },
+        { src: 'src/service-worker.js', dest: 'dist/' },
         { src: 'src/CNAME', dest: 'dist/' },
         { src: 'src/assets', dest: 'dist/' },
       ]

@@ -6,14 +6,76 @@
     <meta name="referrer" content="no-referrer"/>
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0"
     >
     <meta name="theme-color" content="#fff">
     <meta name="Description" content="zjh's blog">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/global.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+
+        @keyframes tick {
+            0% {
+                width: 6px;
+                background: #c2eade;
+            }
+            50% { width: 12px; background: #51c49f; }
+            100% {
+                width: 6px;
+                background: #c2eade;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .tickLoader:before,
+        .tickLoader:after {
+            content: '';
+            display: block;
+            width: 6px;
+            background: #51c49f;
+            height: 1px;
+        }
+
+        .tickLoader:before {
+            margin-bottom: 5px;
+            animation: tick .5s infinite;
+        }
+
+        .tickLoader:after {
+            animation: tick .5s infinite reverse;
+        }
+
+        #gui {
+            flex: 1 1 auto;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.8.1/system.min.js"></script>
     <script type="systemjs-importmap" src="assets/importmap.json"></script>
+    <script>
+      window.addEventListener("load", () => {
+        console.log("page loaded...");
+        if ("serviceWorker" in navigator) {
+          console.log('register service worker...');
+          navigator.serviceWorker.register("service-worker.js");
+        }
+      });
+    </script>
 </head>
 <body style="margin: 0; padding: 0;">
     <div id="gui">

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>zjh.im</title>
+    <meta charset="UTF-8"/>
+    <meta name="referrer" content="no-referrer"/>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0"
+    >
+    <meta name="theme-color" content="#fff">
+    <meta name="Description" content="zjh's blog">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .offline {
+            color: #ddd;
+            border: dashed 3px #ddd;
+            font-size: 12px;
+            padding: 5px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #gui {
+            flex: 1 1 auto;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0;">
+    <div id="gui">
+        <div class="offline center">已离线</div>
+    </div>
+</body>
+</html>
