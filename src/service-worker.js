@@ -1,8 +1,9 @@
-const OFFLINE_VERSION = 11;
+const OFFLINE_VERSION = 13;
 
 const CACHE_NAME = "offline";
-const OFFLINE_URL = "assets/offline-2.html";
+const OFFLINE_URL = "assets/offline-3.html";
 
+const ASSETS_CACHE_NAME = "assets" + OFFLINE_VERSION;
 const VENDOR_CACHE_NAME = "vendor" + OFFLINE_VERSION;
 const OSS_RES_CACHE_NAME = "oss-res" + OFFLINE_VERSION;
 
@@ -58,10 +59,13 @@ const createCacheFirstFetchHandler = (cacheName, urlPatternStr) => (event) => {
 
 const handleVendorFetch = createCacheFirstFetchHandler(VENDOR_CACHE_NAME, 'cdnjs');
 const handleOSSResFetch = createCacheFirstFetchHandler(OSS_RES_CACHE_NAME, 'zjh-im-res.oss');
+const handleAssetsFetch = createCacheFirstFetchHandler(ASSETS_CACHE_NAME, '/assets');
 
 self.addEventListener("fetch", (event) => {
+
   handleVendorFetch(event);
   handleOSSResFetch(event);
+  handleAssetsFetch(event);
 
   if (event.request.mode === "navigate") {
     event.respondWith(
