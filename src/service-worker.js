@@ -1,8 +1,9 @@
-const OFFLINE_VERSION = 13;
+const OFFLINE_VERSION = 16;
 
 const CACHE_NAME = "offline";
 const OFFLINE_URL = "assets/offline-3.html";
 
+const IMAGES_LIST_CACHE_NAME = "images" + OFFLINE_VERSION;
 const ASSETS_CACHE_NAME = "assets" + OFFLINE_VERSION;
 const VENDOR_CACHE_NAME = "vendor" + OFFLINE_VERSION;
 const OSS_RES_CACHE_NAME = "oss-res" + OFFLINE_VERSION;
@@ -34,6 +35,25 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
+const createNetworkFirstFetchHandler = (cacheName, reqFilterFn = () => false) => (event) => {
+  if (!reqFilterFn(event.request)) {
+    return;
+  }
+
+  event.respondWith(
+    caches.open(cacheName).then((ch) => {
+      return fetch(event.request.clone())
+        .then((res) => {
+          ch.put(event.request, res.clone());
+          return res;
+        })
+        .catch(() => {
+          return ch.match(event.request);
+        })
+    })
+  )
+}
+
 const createCacheFirstFetchHandler = (cacheName, urlPatternStr) => (event) => {
   if (event.request.url.includes(urlPatternStr)) {
     event.respondWith(
@@ -57,6 +77,11 @@ const createCacheFirstFetchHandler = (cacheName, urlPatternStr) => (event) => {
   }
 }
 
+const handleImagesFetch = createNetworkFirstFetchHandler(IMAGES_LIST_CACHE_NAME, (req => {
+  const imagesListApi = 'https://api.zjh.im/res';
+  return req.url === imagesListApi;
+}))
+
 const handleVendorFetch = createCacheFirstFetchHandler(VENDOR_CACHE_NAME, 'cdnjs');
 const handleOSSResFetch = createCacheFirstFetchHandler(OSS_RES_CACHE_NAME, 'zjh-im-res.oss');
 const handleAssetsFetch = createCacheFirstFetchHandler(ASSETS_CACHE_NAME, '/assets');
@@ -66,6 +91,7 @@ self.addEventListener("fetch", (event) => {
   handleVendorFetch(event);
   handleOSSResFetch(event);
   handleAssetsFetch(event);
+  handleImagesFetch(event);
 
   if (event.request.mode === "navigate") {
     event.respondWith(
