@@ -1,4 +1,4 @@
-const OFFLINE_VERSION = 16;
+const OFFLINE_VERSION = 17;
 
 const CACHE_NAME = "offline";
 const OFFLINE_URL = "assets/offline-3.html";
@@ -54,8 +54,12 @@ const createNetworkFirstFetchHandler = (cacheName, reqFilterFn = () => false) =>
   )
 }
 
-const createCacheFirstFetchHandler = (cacheName, urlPatternStr) => (event) => {
-  if (event.request.url.includes(urlPatternStr)) {
+const createCacheFirstFetchHandler = (cacheName, pattern) => (event) => {
+  const reqMatched = typeof pattern === 'string'
+    ? event.request.url.includes(pattern)
+    : pattern(event.request);
+
+  if (reqMatched) {
     event.respondWith(
       caches.open(cacheName).then((ch) => {
         return ch.match(event.request).then((res) => {
@@ -84,7 +88,9 @@ const handleImagesFetch = createNetworkFirstFetchHandler(IMAGES_LIST_CACHE_NAME,
 
 const handleVendorFetch = createCacheFirstFetchHandler(VENDOR_CACHE_NAME, 'cdnjs');
 const handleOSSResFetch = createCacheFirstFetchHandler(OSS_RES_CACHE_NAME, 'zjh-im-res.oss');
-const handleAssetsFetch = createCacheFirstFetchHandler(ASSETS_CACHE_NAME, '/assets');
+const handleAssetsFetch = createCacheFirstFetchHandler(ASSETS_CACHE_NAME, (req) => {
+  return req.url.includes('/assets') && !req.url.includes('index.js');
+});
 
 self.addEventListener("fetch", (event) => {
 
