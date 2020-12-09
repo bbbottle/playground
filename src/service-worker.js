@@ -4,6 +4,7 @@ const CACHE_NAME = "offline";
 const OFFLINE_URL = "assets/offline-3.html";
 
 const IMAGES_LIST_CACHE_NAME = "images" + OFFLINE_VERSION;
+const ENTRY_JS_CACHE_NAME = "entry-js-file" + OFFLINE_VERSION;
 const ASSETS_CACHE_NAME = "assets" + OFFLINE_VERSION;
 const VENDOR_CACHE_NAME = "vendor" + OFFLINE_VERSION;
 const OSS_RES_CACHE_NAME = "oss-res" + OFFLINE_VERSION;
@@ -86,6 +87,9 @@ const handleImagesFetch = createNetworkFirstFetchHandler(IMAGES_LIST_CACHE_NAME,
   return req.url === imagesListApi;
 }))
 
+const handleEntryJSFetch = createNetworkFirstFetchHandler(ENTRY_JS_CACHE_NAME, (req => {
+  return req.url.includes('assets/index.js');
+}))
 const handleVendorFetch = createCacheFirstFetchHandler(VENDOR_CACHE_NAME, 'cdnjs');
 const handleOSSResFetch = createCacheFirstFetchHandler(OSS_RES_CACHE_NAME, 'zjh-im-res.oss');
 const handleAssetsFetch = createCacheFirstFetchHandler(ASSETS_CACHE_NAME, (req) => {
@@ -98,6 +102,7 @@ self.addEventListener("fetch", (event) => {
   handleOSSResFetch(event);
   handleAssetsFetch(event);
   handleImagesFetch(event);
+  handleEntryJSFetch(event);
 
   if (event.request.mode === "navigate") {
     event.respondWith(
