@@ -1,7 +1,7 @@
 const OFFLINE_VERSION = 17;
 
 const CACHE_NAME = "offline";
-const OFFLINE_URL = "assets/offline-3.html";
+const OFFLINE_URL = "assets/offline-4.html";
 
 const IMAGES_LIST_CACHE_NAME = "images" + OFFLINE_VERSION;
 const ENTRY_JS_CACHE_NAME = "entry-js-file" + OFFLINE_VERSION;
