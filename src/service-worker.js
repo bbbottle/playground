@@ -1,4 +1,4 @@
-const VERSION = 18;
+const VERSION = 19;
 
 const OFFLINE_URL = "assets/offline-4.html";
 
@@ -128,7 +128,7 @@ self.addEventListener("fetch", (event) => {
         } catch (error) {
           console.log("Fetch failed; returning offline page instead.", error);
 
-          const cache = await caches.open(CACHE_NAME);
+          const cache = await caches.open(OFFLINE_PAGE_CACHE_NAME);
           return await cache.match(OFFLINE_URL);
         }
       })()
