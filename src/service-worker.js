@@ -1,18 +1,18 @@
-const OFFLINE_VERSION = 17;
+const VERSION = 18;
 
-const CACHE_NAME = "offline";
 const OFFLINE_URL = "assets/offline-4.html";
 
-const IMAGES_LIST_CACHE_NAME = "images" + OFFLINE_VERSION;
-const ENTRY_JS_CACHE_NAME = "entry-js-file" + OFFLINE_VERSION;
-const ASSETS_CACHE_NAME = "assets" + OFFLINE_VERSION;
-const VENDOR_CACHE_NAME = "vendor" + OFFLINE_VERSION;
-const OSS_RES_CACHE_NAME = "oss-res" + OFFLINE_VERSION;
+const OFFLINE_PAGE_CACHE_NAME = "offline" + VERSION;
+const IMAGES_LIST_CACHE_NAME = "images" + VERSION;
+const ENTRY_JS_CACHE_NAME = "entry-js-file" + VERSION;
+const ASSETS_CACHE_NAME = "assets" + VERSION;
+const VENDOR_CACHE_NAME = "vendor" + VERSION;
+const OSS_RES_CACHE_NAME = "oss-res" + VERSION;
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
     (() => {
-      caches.open(CACHE_NAME)
+      caches.open(OFFLINE_PAGE_CACHE_NAME)
         .then((ch) => {
           ch.add(new Request(OFFLINE_URL, { cache: "reload" }))
         })
@@ -26,6 +26,15 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     (() => {
+      caches.keys().then(function(cacheNames) {
+        return Promise.all(
+          cacheNames.filter(function(cacheName) {
+            return !cacheName.includes(VERSION + '');
+          }).map(function(cacheName) {
+            return caches.delete(cacheName);
+          })
+        );
+      })
       if ("navigationPreload" in self.registration) {
         self.registration.navigationPreload.enable();
       }
