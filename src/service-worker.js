@@ -1,9 +1,10 @@
-const VERSION = 19;
+const VERSION = 20;
 
 const OFFLINE_URL = "assets/offline-4.html";
 
 const OFFLINE_PAGE_CACHE_NAME = "offline" + VERSION;
 const IMAGES_LIST_CACHE_NAME = "images" + VERSION;
+const ARTICLE_LIST_CACHE_NAME = "articles" + VERSION;
 const ENTRY_JS_CACHE_NAME = "entry-js-file" + VERSION;
 const ASSETS_CACHE_NAME = "assets" + VERSION;
 const VENDOR_CACHE_NAME = "vendor" + VERSION;
@@ -20,6 +21,7 @@ self.addEventListener("install", (event) => {
   );
   // Force the waiting service worker to become the active service worker.
   self.skipWaiting();
+  console.log('SW Installing.')
 });
 
 
@@ -41,6 +43,7 @@ self.addEventListener("activate", (event) => {
     })()
   );
 
+  console.log('SW Actived.')
   // Tell the active service worker to take control of the page immediately.
   self.clients.claim();
 });
@@ -74,13 +77,13 @@ const createCacheFirstFetchHandler = (cacheName, pattern) => (event) => {
       caches.open(cacheName).then((ch) => {
         return ch.match(event.request).then((res) => {
           if (res) {
-            console.log('Found res in cache: ', res);
+            console.log('Found res in cache: ', res.url);
             return res;
           }
 
           return fetch(event.request.clone()).then((res) => {
             if (res.status < 400){
-              console.log('add res to cache: ', res);
+              console.log('add res to cache: ', res.url);
               ch.put(event.request, res.clone())
             }
             return res;
@@ -94,6 +97,11 @@ const createCacheFirstFetchHandler = (cacheName, pattern) => (event) => {
 const handleImagesFetch = createNetworkFirstFetchHandler(IMAGES_LIST_CACHE_NAME, (req => {
   const imagesListApi = 'https://api.zjh.im/res';
   return req.url === imagesListApi;
+}))
+
+const handleArticlesFetch = createNetworkFirstFetchHandler(ARTICLE_LIST_CACHE_NAME, (req => {
+  const articlesApi = 'https://api.zjh.im/articles';
+  return req.url === articlesApi;
 }))
 
 const handleEntryJSFetch = createNetworkFirstFetchHandler(ENTRY_JS_CACHE_NAME, (req => {
@@ -111,6 +119,7 @@ self.addEventListener("fetch", (event) => {
   handleOSSResFetch(event);
   handleAssetsFetch(event);
   handleImagesFetch(event);
+  handleArticlesFetch(event);
   handleEntryJSFetch(event);
 
   if (event.request.mode === "navigate") {

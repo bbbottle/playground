@@ -71,9 +71,9 @@
     <script type="systemjs-importmap" src="assets/importmap.json"></script>
     <script>
       window.addEventListener("load", () => {
-        console.log("page loaded...");
+        console.log("page loaded.");
         if ("serviceWorker" in navigator) {
-          console.log('register service worker...');
+          console.log('SW registering.');
           navigator.serviceWorker.register("service-worker.js");
         }
       });
