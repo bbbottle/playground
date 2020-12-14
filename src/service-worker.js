@@ -1,4 +1,4 @@
-const VERSION = 20;
+const VERSION = 22;
 
 const OFFLINE_URL = "assets/offline-4.html";
 
@@ -48,6 +48,24 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
+const createStaleWhileRevalidateFetchHandler = (cacheName, reqFilterFn = () => false) => (event) => {
+  if (!reqFilterFn(event.request)) {
+    return;
+  }
+
+  event.respondWith(
+    caches.open(cacheName).then(function (cache) {
+      return cache.match(event.request).then(function (response) {
+        let fetchPromise = fetch(event.request).then(function (networkResponse) {
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
+        });
+        return response || fetchPromise;
+      });
+    })
+  );
+}
+
 const createNetworkFirstFetchHandler = (cacheName, reqFilterFn = () => false) => (event) => {
   if (!reqFilterFn(event.request)) {
     return;
@@ -94,12 +112,12 @@ const createCacheFirstFetchHandler = (cacheName, pattern) => (event) => {
   }
 }
 
-const handleImagesFetch = createNetworkFirstFetchHandler(IMAGES_LIST_CACHE_NAME, (req => {
+const handleImagesFetch = createStaleWhileRevalidateFetchHandler(IMAGES_LIST_CACHE_NAME, (req => {
   const imagesListApi = 'https://api.zjh.im/res';
   return req.url === imagesListApi;
 }))
 
-const handleArticlesFetch = createNetworkFirstFetchHandler(ARTICLE_LIST_CACHE_NAME, (req => {
+const handleArticlesFetch = createStaleWhileRevalidateFetchHandler(ARTICLE_LIST_CACHE_NAME, (req => {
   const articlesApi = 'https://api.zjh.im/articles';
   return req.url === articlesApi;
 }))
