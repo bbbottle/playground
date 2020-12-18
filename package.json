@@ -9,7 +9,7 @@
   "author": "zjhou",
   "license": "ISC",
   "dependencies": {
-    "@bbbottle/zjh.im": "0.0.20"
+    "@bbbottle/zjh.im": "0.0.21"
   },
   "devDependencies": {
     "rollup": "^2.34.0",
