@@ -2,6 +2,7 @@
 *.iml
 .gitignore
 .gitattributes
+.npmrc
 .package-lock.json
 src/node_modules
 node_modules
