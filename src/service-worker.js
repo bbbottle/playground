@@ -1,4 +1,4 @@
-const VERSION = 22;
+const VERSION = 24;
 
 const OFFLINE_URL = "assets/offline-4.html";
 
@@ -125,7 +125,7 @@ const handleArticlesFetch = createStaleWhileRevalidateFetchHandler(ARTICLE_LIST_
 const handleEntryJSFetch = createNetworkFirstFetchHandler(ENTRY_JS_CACHE_NAME, (req => {
   return req.url.includes('assets/index.js');
 }))
-const handleVendorFetch = createCacheFirstFetchHandler(VENDOR_CACHE_NAME, 'cdnjs');
+const handleVendorFetch = createCacheFirstFetchHandler(VENDOR_CACHE_NAME, 'cdn.jsdelivr');
 const handleOSSResFetch = createCacheFirstFetchHandler(OSS_RES_CACHE_NAME, 'zjh-im-res.oss');
 const handleAssetsFetch = createCacheFirstFetchHandler(ASSETS_CACHE_NAME, (req) => {
   return req.url.includes('/assets') && !req.url.includes('index.js');
