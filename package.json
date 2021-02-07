@@ -1,6 +1,6 @@
 {
   "name": "playground",
-  "version": "3.0.27",
+  "version": "3.0.28",
   "description": "https://zjh.im",
   "scripts": {
     "build": "rollup -c",
@@ -9,7 +9,7 @@
   "author": "zjhou",
   "license": "ISC",
   "dependencies": {
-    "@bbbottle/zjh.im": "0.2.9"
+    "@bbbottle/zjh.im": "0.2.10"
   },
   "devDependencies": {
     "rollup": "^2.34.0",
