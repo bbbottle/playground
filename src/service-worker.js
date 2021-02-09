@@ -113,12 +113,12 @@ const createCacheFirstFetchHandler = (cacheName, pattern) => (event) => {
 }
 
 const handleImagesFetch = createStaleWhileRevalidateFetchHandler(IMAGES_LIST_CACHE_NAME, (req => {
-  const imagesListApi = 'https://api.zjh.im/res';
+  const imagesListApi = 'https://api.zjh.im/gallery/photos';
   return req.url === imagesListApi;
 }))
 
 const handleArticlesFetch = createStaleWhileRevalidateFetchHandler(ARTICLE_LIST_CACHE_NAME, (req => {
-  const articlesApi = 'https://api.zjh.im/articles';
+  const articlesApi = 'https://api.zjh.im/blog/articles';
   return req.url === articlesApi;
 }))
 
