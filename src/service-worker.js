@@ -1,10 +1,11 @@
-const VERSION = 25;
+const VERSION = 26;
 
 const OFFLINE_URL = "assets/offline-4.html";
 
 const OFFLINE_PAGE_CACHE_NAME = "offline" + VERSION;
 const IMAGES_LIST_CACHE_NAME = "images" + VERSION;
 const ARTICLE_LIST_CACHE_NAME = "articles" + VERSION;
+const ARTICLE_CACHE_NAME = "article" + VERSION;
 const ENTRY_JS_CACHE_NAME = "entry-js-file" + VERSION;
 const ASSETS_CACHE_NAME = "assets" + VERSION;
 const VENDOR_CACHE_NAME = "vendor" + VERSION;
@@ -122,6 +123,11 @@ const handleArticlesFetch = createStaleWhileRevalidateFetchHandler(ARTICLE_LIST_
   return req.url === articlesApi;
 }))
 
+const handleArticleFetch = createStaleWhileRevalidateFetchHandler(ARTICLE_CACHE_NAME, (req => {
+  const articlesApi = 'https://api.zjh.im/blog/article';
+  return req.url === articlesApi;
+}))
+
 const handleEntryJSFetch = createNetworkFirstFetchHandler(ENTRY_JS_CACHE_NAME, (req => {
   return req.url.includes('assets/index.js');
 }))
@@ -138,6 +144,7 @@ self.addEventListener("fetch", (event) => {
   handleAssetsFetch(event);
   handleImagesFetch(event);
   handleArticlesFetch(event);
+  handleArticleFetch(event);
   handleEntryJSFetch(event);
 
   if (event.request.mode === "navigate") {
