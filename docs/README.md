@@ -1,6 +1,3 @@
-# ![profile](/docs/Logo.png)
-
-
 [zjh.im](https://zjh.im) is my blog and playground.
 Powered by
 - GitHub Pages
