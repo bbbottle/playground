@@ -1,4 +1,4 @@
-const VERSION = 27;
+const VERSION = 28;
 
 const OFFLINE_URL = "assets/offline-4.html";
 
