@@ -1,4 +1,4 @@
-const VERSION = 30;
+const VERSION = 32;
 
 const OFFLINE_URL = "assets/offline-4.html";
 
@@ -124,8 +124,8 @@ const handleArticlesFetch = createStaleWhileRevalidateFetchHandler(ARTICLE_LIST_
 }))
 
 const handleArticleFetch = createStaleWhileRevalidateFetchHandler(ARTICLE_CACHE_NAME, (req => {
-  const articlesApi = 'https://api.zjh.im/blog/article';
-  return req.url === articlesApi;
+  const articlesApi = 'https://api.zjh.im/blog/article?slug=';
+  return req.url.includes(articlesApi);
 }))
 
 const handleEntryJSFetch = createNetworkFirstFetchHandler(ENTRY_JS_CACHE_NAME, (req => {
