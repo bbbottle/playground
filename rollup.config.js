@@ -43,4 +43,12 @@ export default {
     commonjs(),
     terser()
   ],
+  external: [
+    'react',
+    'react-dom',
+    'immer',
+    'classnames',
+    'prop-types',
+    'rxjs'
+  ]
 };
