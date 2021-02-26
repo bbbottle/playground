@@ -6,6 +6,17 @@ import replace from '@rollup/plugin-replace';
 import copy from 'rollup-plugin-copy'
 import { terser } from "rollup-plugin-terser";
 
+const entryHTMLTransformer = (contents) => {
+  return contents.toString()
+    .replace(
+      'type="module"',
+      'type="systemjs-module"'
+    )
+    .replace(
+      '<!-- RXJS_HACK_SCRIPTS -->',
+      '<script src="./assets/rxjs-operators-resolve-hacker.js"></script>'
+    );
+}
 
 export default {
   input: ['src/assets/index.js'],
@@ -14,16 +25,20 @@ export default {
       sourcemap: false,
       dir: './dist/assets',
       format: 'system',
+      entryFileNames: `[name].js`,
     },
   ],
   plugins: [
     resolve(),
     clear({
-      target: ['dist/assets']
+      target: ['dist']
     }),
     copy({
       targets: [
-        { src: 'src/index.html', dest: 'dist/' },
+        {
+          src: 'src/index.html', dest: 'dist/',
+          transform: entryHTMLTransformer,
+        },
         { src: 'src/service-worker.js', dest: 'dist/' },
         { src: 'src/CNAME', dest: 'dist/' },
         { src: 'src/assets', dest: 'dist/' },
@@ -49,6 +64,7 @@ export default {
     'immer',
     'classnames',
     'prop-types',
+    'rxjs/operators',
     'rxjs'
   ]
 };

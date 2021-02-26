@@ -74,7 +74,9 @@
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/named-register.js'></script>
     <script type="systemjs-importmap" src="assets/importmap.json"></script>
+    <!-- RXJS_HACK_SCRIPTS -->
     <script>
       window.addEventListener("load", () => {
         console.log("page loaded.");
@@ -89,6 +91,6 @@
     <div id="gui">
         <div class="tickLoader center"></div>
     </div>
-    <script type="systemjs-module" src="assets/index.js"></script>
+    <script type="module" src="./assets/index.js"></script>
 </body>
 </html>
