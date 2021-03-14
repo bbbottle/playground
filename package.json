@@ -10,7 +10,7 @@
   "author": "zjhou",
   "license": "ISC",
   "dependencies": {
-    "@bbbottle/zjh.im": "0.5.9"
+    "@bbbottle/zjh.im": "0.5.10"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
