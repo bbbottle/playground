@@ -40,6 +40,7 @@ export default ({ mode }) => {
     build: {
       outDir: '../dist',
       name: 'index.js',
+      target: 'esnext',
       rollupOptions,
     },
   };
