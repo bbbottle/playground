@@ -1,70 +1,65 @@
-import babel from 'rollup-plugin-babel';
-import commonjs from '@rollup/plugin-commonjs';
-import clear from 'rollup-plugin-clear'
-import resolve from 'rollup-plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
-import copy from 'rollup-plugin-copy'
-import { terser } from "rollup-plugin-terser";
+import babel from "rollup-plugin-babel";
+import clear from "rollup-plugin-clear";
+import resolve from "rollup-plugin-node-resolve";
+import replace from "@rollup/plugin-replace";
+import copy from "rollup-plugin-copy";
 
 const entryHTMLTransformer = (contents) => {
-  return contents.toString()
+  return contents
+    .toString()
+    .replace('type="module"', 'type="systemjs-module"')
     .replace(
-      'type="module"',
-      'type="systemjs-module"'
-    )
-    .replace(
-      '<!-- RXJS_HACK_SCRIPTS -->',
+      "<!-- RXJS_HACK_SCRIPTS -->",
       '<script src="./assets/rxjs-operators-resolve-hacker.js"></script>'
     );
-}
+};
 
 export default {
-  input: ['src/assets/index.js'],
+  input: ["src/assets/index.js"],
   output: [
     {
       sourcemap: false,
-      dir: './dist/assets',
-      format: 'system',
+      dir: "./dist/assets",
+      format: "system",
       entryFileNames: `[name].js`,
     },
   ],
   plugins: [
     resolve(),
     clear({
-      target: ['dist']
+      target: ["dist"],
     }),
     copy({
       targets: [
         {
-          src: 'src/index.html', dest: 'dist/',
+          src: "src/index.html",
+          dest: "dist/",
           transform: entryHTMLTransformer,
         },
-        { src: 'src/service-worker.js', dest: 'dist/' },
-        { src: 'src/CNAME', dest: 'dist/' },
-        { src: 'src/assets', dest: 'dist/' },
-      ]
+        { src: "src/service-worker.js", dest: "dist/" },
+        { src: "src/CNAME", dest: "dist/" },
+        { src: "src/assets", dest: "dist/" },
+      ],
     }),
     babel({
-      exclude: 'node_modules/**',
-      presets: ['@babel/preset-env', '@babel/preset-react'],
+      exclude: "node_modules/**",
+      presets: ["@babel/preset-env", "@babel/preset-react"],
       plugins: [
         "@babel/plugin-syntax-export-default-from",
-        "@babel/plugin-proposal-class-properties"
-      ]
+        "@babel/plugin-proposal-class-properties",
+      ],
     }),
     replace({
-      'process.env.NODE_ENV': "'production'",
+      "process.env.NODE_ENV": "'production'",
     }),
-    commonjs(),
-    terser()
   ],
   external: [
-    'react',
-    'react-dom',
-    'immer',
-    'classnames',
-    'prop-types',
-    'rxjs/operators',
-    'rxjs'
-  ]
+    "react",
+    "react-dom",
+    "immer",
+    "classnames",
+    "prop-types",
+    "rxjs/operators",
+    "rxjs",
+  ],
 };
