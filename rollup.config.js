@@ -19,6 +19,7 @@ const entryHTMLTransformer = (contents) => {
 }
 
 export default {
+  treeshake: false,
   input: ['src/assets/index.js'],
   output: [
     {
