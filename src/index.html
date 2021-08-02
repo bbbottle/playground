@@ -78,10 +78,6 @@ a{transition:all .3s;text-decoration:none;color:#262626!important;border-radius:
             align-items: center;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.min.js"></script>
-    <script src='https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/named-register.js'></script>
-    <script type="systemjs-importmap" src="assets/importmap.json"></script>
-    <!-- RXJS_HACK_SCRIPTS -->
     <script>
       window.addEventListener("load", () => {
         console.log("page loaded.");
@@ -96,6 +92,10 @@ a{transition:all .3s;text-decoration:none;color:#262626!important;border-radius:
     <div id="gui">
         <div class="tickLoader center"></div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/named-register.js'></script>
+    <script type="systemjs-importmap" src="assets/importmap.json"></script>
+    <!-- RXJS_HACK_SCRIPTS -->
     <script type="module" src="./assets/index.js"></script>
 </body>
 </html>
