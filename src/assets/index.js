@@ -1,12 +1,13 @@
-import { renderZjhDotIm } from '@bbbottle/zjh.im';
+import { renderZjhDotIm } from "@bbbottle/zjh.im";
 
-renderZjhDotIm(
-  document.getElementById('gui')
-);
+try {
+  renderZjhDotIm(document.getElementById("gui"));
+} catch (e) {
+  window.location.reload();
+}
 
-window.addEventListener('beforeinstallprompt', (event) => {
-  console.log('👍', 'beforeinstallprompt', event);
+window.addEventListener("beforeinstallprompt", (event) => {
   event.userChoice.then((result) => {
-    console.log('👍', 'userChoice', result);
+    console.log("👍", "userChoice", result);
   });
 });
